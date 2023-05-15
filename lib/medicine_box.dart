@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'medicine.dart';
-import 'rating_box.dart';
+
 class medicine_box extends StatelessWidget {
   const medicine_box({Key? key , required this.item}) : super(key: key);
 final medicine item;

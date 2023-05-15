@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'forget_password.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
 
@@ -64,6 +65,27 @@ class _loginState extends State<login> {
                         hintText: 'Password'
                     ),
                   ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    TextButton(onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                          builder: (context) => forget_password(),
+                      ),
+                      );
+                    }, child:
+                    Text('Forget Password  ',
+                      style: TextStyle(
+                        fontSize: 12,
+                          color: Color.fromRGBO(90, 130, 95, 100)
+                      ),
+                    ),
+                    ),
+                  ],
                 ),
                 SizedBox(
                   height: 30,

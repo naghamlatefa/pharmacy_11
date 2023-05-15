@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'medicine.dart';
 import 'medicine_box.dart';
-import 'rating_box.dart';
+
 import 'medicine_page.dart';
 class show_medicine extends StatelessWidget {
    show_medicine({Key? key }) : super(key: key);
