@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_1/register.dart';
 import 'forget_password.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -48,7 +49,7 @@ class _loginState extends State<login> {
                       ),
                       validator: (value){
                         if(value!.isEmpty){
-                          return 'Email Must Not Be Embty';
+                          return 'Email Must Not Be Empty';
                         }
                         return null;
                       } ,
@@ -74,7 +75,7 @@ class _loginState extends State<login> {
                       ),
                       validator: (value){
                         if(value!.isEmpty){
-                          return 'Password Must Not Be Embty';
+                          return 'Password Must Not Be Empty';
                         }
                         return null;
                       } ,
@@ -92,7 +93,7 @@ class _loginState extends State<login> {
                         ),
                         );
                       }, child:
-                      Text('Forget Password  ',
+                      Text('Forgot Password  ',
                         style: TextStyle(
                           fontSize: 12,
                             color: Color.fromRGBO(90, 130, 95, 100)
@@ -138,7 +139,9 @@ class _loginState extends State<login> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text('Don\'t Have An Acount ?'),
-                      TextButton(onPressed: () {}, child:
+                      TextButton(onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> register()));
+                      }, child:
                       Text('Register Now ',
                         style: TextStyle(
                             color: Color.fromRGBO(90, 130, 95, 100)
