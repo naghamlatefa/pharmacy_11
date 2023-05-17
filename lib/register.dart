@@ -15,7 +15,6 @@ import 'login.dart';
    @override
    Widget build(BuildContext context) {
      return Scaffold(
-
        appBar: AppBar(
          backgroundColor: Color.fromRGBO(90, 130, 95, 100),
          title: Text('Register'),
@@ -174,6 +173,7 @@ import 'login.dart';
              Padding(
                padding: const EdgeInsets.all(10.0),
                child: TextFormField(
+                 keyboardType: TextInputType.number,
                  cursorColor: Color.fromRGBO(90, 130, 95, 100),
                  decoration: InputDecoration(
                      focusedBorder: OutlineInputBorder(
@@ -195,7 +195,6 @@ import 'login.dart';
              ),
              SizedBox(height:30),
            Container(margin: EdgeInsets.symmetric(horizontal: 10),
-
              child: DropdownButtonFormField(
                dropdownColor: Color.fromRGBO(201, 201, 201, 1),
                decoration: InputDecoration(
@@ -223,8 +222,6 @@ import 'login.dart';
                  value: selectedgender,
                      validator: (value) => value == null ? 'Please choose your gender' : null),
            ),
-
-
              SizedBox(height: 30,),
              Container(
                  margin: EdgeInsets.symmetric(horizontal: 60),
@@ -261,7 +258,6 @@ import 'login.dart';
                  ),
                ),
              ),
-
            ],
          ),
        )

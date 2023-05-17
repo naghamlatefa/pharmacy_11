@@ -11,20 +11,11 @@ class _loginState extends State<login> {
   var formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Container(
-        height: MediaQuery
-            .of(context)
-            .size
-            .height,
-        color: Colors.white,
-        child: Material(
-          color: Colors.white,
-          child: SingleChildScrollView(
-            child: Form(
+    return Scaffold(
+      body: Form(
               key: formkey,
-              child: Column(
-                children: [
+              child: ListView(
+                children: <Widget> [
                   ClipPath(
                     child: Image(
                       image: AssetImage('assets/login1.jpg'),
@@ -153,10 +144,6 @@ class _loginState extends State<login> {
                 ],
               ),
             ),
-          ),
-        ),
-      ),
-
     );
   }
 }
