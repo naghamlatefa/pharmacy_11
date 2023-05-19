@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'medicine.dart';
 
 class medicine_box extends StatelessWidget {
-  const medicine_box({Key? key , required this.item}) : super(key: key);
+  const medicine_box({Key ? key , required this.item}) : super(key: key);
 final medicine item;
   @override
   Widget build(BuildContext context) {
