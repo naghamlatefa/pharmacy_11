@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
+import 'categories.dart';
  class register extends StatefulWidget {
    const register({Key? key}) : super(key: key);
 
@@ -233,6 +234,12 @@ import 'login.dart';
                    height: 50,
                    onPressed: () {
                      if(formkey.currentState!.validate()){
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(
+                           builder: (context) => categories(),
+                         ),
+                       );
 
                      }
                    },

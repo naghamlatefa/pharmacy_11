@@ -4,6 +4,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:pharmacy_1/register.dart';
 import 'forget_password.dart';
 import 'local/local_controller.dart';
+import 'categories.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
 
@@ -107,6 +108,12 @@ class _loginState extends State<login> {
                         height: 50,
                         onPressed: () {
                           if(formkey.currentState!.validate()){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => categories(),
+                              ),
+                            );
 
                           }
                         },
