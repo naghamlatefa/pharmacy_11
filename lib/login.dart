@@ -140,7 +140,40 @@ class _loginState extends State<login> {
                       ),
                       ),
                     ],
-                  )
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    children: [
+                      Container(
+                          margin: EdgeInsets.symmetric(horizontal: 60),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Color.fromRGBO(90, 130, 95, 100),
+                          ),
+                          child: MaterialButton(
+                            height: 50,
+                            onPressed: () {
+                            },
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Icon(Icons.language,
+                                  color: Colors.white,),
+                                Text('English',
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 19,
+                                  ),),
+                              ],
+                            ),
+                          )),
+
+
+                    ],
+                  ),
                 ],
               ),
             ),
