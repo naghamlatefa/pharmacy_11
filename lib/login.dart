@@ -142,7 +142,7 @@ class _loginState extends State<login> {
                     ],
                   ),
                   SizedBox(
-                    height: 20,
+                    height: 10,
                   ),
                   Row(
                     children:  [
@@ -170,8 +170,6 @@ class _loginState extends State<login> {
                               ],
                             ),
                           )),
-
-
                     ],
                   ),
                 ],
