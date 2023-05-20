@@ -1,10 +1,9 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:pharmacy_1/categories.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pharmacy_1/login.dart';
-import 'package:pharmacy_1/show_medicine.dart';
-import 'show_medicine.dart';
+import 'local/local_controller.dart';
+import 'local/local.dart';
 
 void main() {
   runApp(MyApp());
@@ -12,10 +11,12 @@ void main() {
 class MyApp extends StatelessWidget{
   @override
   Widget build(BuildContext context){
-    return MaterialApp(
+    Get.put(mylocalcontroller());
+    return GetMaterialApp(
         debugShowCheckedModeBanner: false ,
         home: login(),
-
+      locale: Get.deviceLocale,
+      translations : Mylocal(),
     );
 
   }

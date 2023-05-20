@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:pharmacy_1/register.dart';
 import 'forget_password.dart';
+import 'local/local_controller.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
 
@@ -11,6 +14,7 @@ class _loginState extends State<login> {
   var formkey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
+    mylocalcontroller controllerlang=Get.find();
     return Scaffold(
       body: Form(
               key: formkey,
@@ -33,11 +37,11 @@ class _loginState extends State<login> {
                           filled: true,
                           prefixIcon: Icon(Icons.email_outlined,
                             color: Color.fromRGBO(90, 130, 95, 100),),
-                          hintText: 'Email'
+                          hintText: 'Email'.tr
                       ),
                       validator: (value){
                         if(value!.isEmpty){
-                          return 'Email Must Not Be Empty';
+                          return 'Email Must Not Be Empty'.tr;
                         }
                         return null;
                       } ,
@@ -59,11 +63,11 @@ class _loginState extends State<login> {
                           filled: true,
                           prefixIcon: Icon(Icons.lock_outline,
                             color: Color.fromRGBO(90, 130, 95, 100),),
-                          hintText: 'Password'
+                          hintText: 'Password'.tr
                       ),
                       validator: (value){
                         if(value!.isEmpty){
-                          return 'Password Must Not Be Empty';
+                          return 'Password Must Not Be Empty'.tr;
                         }
                         return null;
                       } ,
@@ -81,7 +85,7 @@ class _loginState extends State<login> {
                         ),
                         );
                       }, child:
-                      Text('Forgot Password  ',
+                      Text('Forgot Password  '.tr,
                         style: TextStyle(
                           fontSize: 12,
                             color: Color.fromRGBO(90, 130, 95, 100)
@@ -111,7 +115,7 @@ class _loginState extends State<login> {
                           children: [
                             Icon(Icons.login,
                               color: Colors.white,),
-                            Text(' Login',
+                            Text(' Login'.tr,
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
@@ -126,11 +130,11 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Don\'t Have An Acount ?'),
+                      Text('Don\'t Have An Acount ?'.tr),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> register()));
                       }, child:
-                      Text('Register Now ',
+                      Text('Register Now '.tr,
                         style: TextStyle(
                             color: Color.fromRGBO(90, 130, 95, 100)
                         ),
@@ -150,13 +154,14 @@ class _loginState extends State<login> {
                           child: MaterialButton(
                             height: 50,
                             onPressed: () {
+                              controllerlang.changelang("en");
                             },
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(Icons.language,
                                   color: Colors.white,),
-                                Text('English',
+                                Text('English'.tr,
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w600,
@@ -167,21 +172,22 @@ class _loginState extends State<login> {
                           ),
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 30),
+                        margin: EdgeInsets.symmetric(horizontal: 20),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(30),
                           color: Color.fromRGBO(90, 130, 95, 100),
                         ),
                         child: MaterialButton(
                           height: 50,
                           onPressed: () {
+                            controllerlang.changelang("ar");
                           },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(Icons.language,
                                 color: Colors.white,),
-                              Text('Arabic',
+                              Text('Arabic'.tr,
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w600,
