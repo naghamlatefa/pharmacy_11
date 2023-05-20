@@ -21,9 +21,6 @@ class _loginState extends State<login> {
                       image: AssetImage('assets/login1.jpg'),
                     ),
                   ),
-                  SizedBox(
-                    height: 30,
-                  ),
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
@@ -141,15 +138,13 @@ class _loginState extends State<login> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    height: 10,
-                  ),
                   Row(
-                    children:  [
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
                       Container(
-                          margin: EdgeInsets.symmetric(horizontal: 60),
+                          margin: EdgeInsets.symmetric(horizontal: 20),
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
+                            borderRadius: BorderRadius.circular(30),
                             color: Color.fromRGBO(90, 130, 95, 100),
                           ),
                           child: MaterialButton(
@@ -157,7 +152,7 @@ class _loginState extends State<login> {
                             onPressed: () {
                             },
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(Icons.language,
                                   color: Colors.white,),
@@ -169,9 +164,36 @@ class _loginState extends State<login> {
                                   ),),
                               ],
                             ),
-                          )),
+                          ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 30),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Color.fromRGBO(90, 130, 95, 100),
+                        ),
+                        child: MaterialButton(
+                          height: 50,
+                          onPressed: () {
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(Icons.language,
+                                color: Colors.white,),
+                              Text('Arabic',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 19,
+                                ),),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
+
                 ],
               ),
             ),
