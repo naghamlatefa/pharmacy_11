@@ -7,7 +7,6 @@ final medicine item;
   @override
   Widget build(BuildContext context) {
     return Container(
-
       padding: EdgeInsets.all(2),
       height: 150,
       width: 50,

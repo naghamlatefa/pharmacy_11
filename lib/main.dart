@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:pharmacy_1/categories.dart';
+import 'package:pharmacy_1/local/language.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/show_medicine.dart';
 import 'show_medicine.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget{
         debugShowCheckedModeBanner: false ,
         home: categories(),
       localizationsDelegates: [
-
+        AppLocale.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
@@ -24,9 +25,12 @@ class MyApp extends StatelessWidget{
         Locale("en", ""),
         Locale("ar" , ""),
       ],
-      localeListResolutionCallback: (currentlang , supportlang) {
+      localeResolutionCallback: (currentlang , supportlang) {
         if (currentlang != null) {
           for (Locale locale in supportlang) {
+            if (locale.languageCode == currentlang.languageCode){
+              return currentlang;
+            }
           }
           return supportlang.first;
         }
