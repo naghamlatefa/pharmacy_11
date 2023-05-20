@@ -81,7 +81,7 @@ class _loginState extends State<login> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                            builder: (context) => forget_password(),
+                            builder: (context) =>  forget_password(),
                         ),
                         );
                       }, child:
