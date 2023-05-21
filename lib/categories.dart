@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:pharmacy_1/drawer.dart';
-
-
 class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
 
