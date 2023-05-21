@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
+import 'package:pharmacy_1/drawer.dart';
 
 
 class categories extends StatefulWidget {
@@ -14,17 +15,22 @@ class _categoriesState extends State<categories> {
   Widget build(BuildContext context) {
     double screenheight= MediaQuery.of(context).size.height;
     double screenwidth= MediaQuery.of(context).size.width;
+    Icon cusIcon = Icon(Icons.search);
+    Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
 
     return  Scaffold(
-      appBar: AppBar(title: Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
+      drawer: drawer(),
+      appBar: AppBar(title: cusBar,
       centerTitle: true,
       backgroundColor:  Color.fromRGBO(90, 130, 95, 100),
-      leading: IconButton( onPressed: (){ print(screenheight);
-      print(screenwidth);},
-          icon: Icon(Icons.view_headline_sharp)),),
+     actions: [IconButton(icon: cusIcon,
+         onPressed: (){
+
+     } )],
+      ),
       body:ListView(
         padding: EdgeInsets.all(screenwidth/26),
-        children: <Widget> [Container(height: screenheight/4.3,width: screenwidth/5.3,
+        children: <Widget> [Container(padding: EdgeInsets.all(screenheight/128.5),height: screenheight/4.3,width: screenwidth/5.3,
           child: Stack(
             children:<Widget> [Container(
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage( fit: BoxFit.fill,image:AssetImage('assets/welcome5.jpg'))),
@@ -39,11 +45,13 @@ class _categoriesState extends State<categories> {
                 child: Stack(
                   children: [
                     Container(child:  Container(margin:EdgeInsets.all(screenwidth/12.1),child:Text("Pain Relivers And Fever Reducers",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/48),)),height: screenheight/4.3,width: screenheight/4.3,
-                    decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/fever2.jpg')),borderRadius: BorderRadius.circular(50),color:Color.fromRGBO(90, 130, 95, 100) ),
+                    decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/fever2.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
+
               ),
+              SizedBox(width: screenwidth/6),
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
@@ -67,11 +75,12 @@ class _categoriesState extends State<categories> {
                   ],
                 ),
               ),
+              SizedBox(width: screenwidth/6),
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
                     Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/10,screenwidth/13.3,screenwidth/13.3),child: Text("Lipid Reducers",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenheight/4.3,width: screenheight/4.3,
-                      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/lipids.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
+                      decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/lipids.jpg')),borderRadius: BorderRadius.circular(50),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
@@ -90,6 +99,7 @@ class _categoriesState extends State<categories> {
                   ],
                 ),
               ),
+              SizedBox(width: screenwidth/6),
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
@@ -113,6 +123,7 @@ class _categoriesState extends State<categories> {
                   ],
                 ),
               ),
+              SizedBox(width: screenwidth/6),
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
@@ -136,6 +147,7 @@ class _categoriesState extends State<categories> {
                   ],
                 ),
               ),
+              SizedBox(width: screenwidth/6),
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
@@ -159,6 +171,7 @@ class _categoriesState extends State<categories> {
                   ],
                 ),
               ),
+              
 
             ],
           )
