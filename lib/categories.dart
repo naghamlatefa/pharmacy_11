@@ -63,23 +63,24 @@ class _categoriesState extends State<categories> {
               ),
             ],
           ),
-          SizedBox(height:screenheight/42.8),
+          SizedBox(height: screenheight/32.125),
+
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Anti-Allergics And Cold",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Anti-Allergics And Cold",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/cold.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: screenwidth/6),
+
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/10,screenwidth/13.3,screenwidth/13.3),child: Text("Lipid Reducers",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/10,screenwidth/13.3,screenwidth/13.3),child: Text("Lipid Reducers",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/lipids.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
@@ -87,23 +88,24 @@ class _categoriesState extends State<categories> {
               ),
             ],
           ),
-          SizedBox(height:screenheight/42.8),
+          SizedBox(height: screenheight/32.125),
+
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/6,screenwidth/13.3,screenwidth/13.3),child: Text("Muscle Relaxants",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/64.25),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/6,screenwidth/13.3,screenwidth/13.3),child: Text("Muscle Relaxants",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/64.25),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/muscle.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: screenwidth/6),
+
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/10,screenwidth/13.3,screenwidth/13.3),child: Text("Hormonal Drugs",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/10,screenwidth/13.3,screenwidth/13.3),child: Text("Hormonal Drugs",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/hormones.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
@@ -111,23 +113,23 @@ class _categoriesState extends State<categories> {
               ),
             ],
           ),
-          SizedBox(height:screenheight/42.8),
+          SizedBox(height: screenheight/32.125),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Vitamins And Nutritional Supplements",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/45.89),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Vitamins And Nutritional Supplements",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/45.89),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/vitamins.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: screenwidth/6),
+
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Hygiene And Self-Care",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Hygiene And Self-Care",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/shampoos.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
@@ -135,23 +137,24 @@ class _categoriesState extends State<categories> {
               ),
             ],
           ),
-          SizedBox(height:screenheight/42.8),
+          SizedBox(height: screenheight/32.125),
+
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                      Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/7,screenwidth/13.3,screenwidth/13.3),child: Text("Antibiotics",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/42.8),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                      Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/7,screenwidth/13.3,screenwidth/13.3),child: Text("Antibiotics",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/42.8),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/bacteria.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
                 ),
               ),
-              SizedBox(width: screenwidth/6),
+
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/7,screenwidth/13.3,screenwidth/13.3),child: Text("Antidepressants",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/58.4),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.fromLTRB(screenwidth/13.3,screenwidth/7,screenwidth/13.3,screenwidth/13.3),child: Text("Antidepressants",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/58.4),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/depression.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
@@ -159,13 +162,13 @@ class _categoriesState extends State<categories> {
               ),
             ],
           ),
-          SizedBox(height:screenheight/42.8),
+          SizedBox(height: screenheight/32.125),
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},
                 child: Stack(
                   children: [
-                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Creams And Ointments",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/6.15,width: screenwidth/6.15,
+                    Container(child:  Container(margin:EdgeInsets.all(screenwidth/13.3),child: Text("Creams And Ointments",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,fontSize: screenheight/36.7),)),height: screenwidth/2.35,width: screenwidth/2.35,
                       decoration: BoxDecoration(image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/creams.jpg')),borderRadius: BorderRadius.circular(30),color:Color.fromRGBO(90, 130, 95, 100) ),
                     ),
                   ],
