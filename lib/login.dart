@@ -152,7 +152,7 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Container(
+                     /* Container(
                           margin: EdgeInsets.symmetric(horizontal: 20),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(30),
@@ -201,6 +201,24 @@ class _loginState extends State<login> {
                                   fontSize: 19,
                                 ),),
                             ],
+                          ),
+                        ),
+                      ),*/
+                      TextButton(onPressed: () {
+                        controllerlang.changelang("en");
+                      },
+                        child: Text('English'.tr,
+                        style: TextStyle(
+                            color: Color.fromRGBO(90, 130, 95, 100)
+                        ),
+                      ),
+                      ),
+                      TextButton(onPressed: () {
+                        controllerlang.changelang("ar");
+                      },
+                        child: Text('Arabic'.tr,
+                          style: TextStyle(
+                              color: Color.fromRGBO(90, 130, 95, 100)
                           ),
                         ),
                       ),
