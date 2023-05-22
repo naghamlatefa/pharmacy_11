@@ -18,7 +18,6 @@ class show_medicine extends StatelessWidget {
         backgroundColor: Color.fromRGBO(90, 130, 95, 100),
       ),
       body: ListView.builder(
-
         itemCount: items.length,
         itemBuilder: (context,index){
           return GestureDetector(

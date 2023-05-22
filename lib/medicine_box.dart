@@ -2,41 +2,61 @@ import 'package:flutter/material.dart';
 import 'medicine.dart';
 
 class medicine_box extends StatelessWidget {
-  const medicine_box({Key ? key , required this.item}) : super(key: key);
-final medicine item;
+  const medicine_box({Key ? key, required this.item}) : super(key: key);
+  final medicine item;
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(2),
-      height: 150,
-      width: 50,
-      child: Card(
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset("assets/"  + this.item.image,width: 120,),
-            Expanded(child: Container(
-              padding: EdgeInsets.all(5),
-              child: SingleChildScrollView(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(this.item.name,
-                    style: TextStyle(fontWeight: FontWeight.bold),),
-                    Text(this.item.combination),
-                    Text("price : " + this.item.price.toString()),
-                    Text("amoumt : " + this.item.amount.toString()),
-
-                  ],
-                ),
-              ),
-            )
-
-            )
-          ],
+      margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
+      height: 180,
+      decoration: BoxDecoration(
+        color: Color.fromRGBO(90, 130, 95, 100),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withOpacity(0.6),
+            offset: Offset(
+              0.0,
+              10.0,
+            ),
+            blurRadius: 10.0,
+            spreadRadius: -6.0,
+          ),
+        ],
+        image: DecorationImage(
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(0.35),
+            BlendMode.multiply,
+          ),
+          image: AssetImage("assets/"  + this.item.image),
+          fit: BoxFit.cover,
         ),
       ),
+      child: Stack(
+          children: [
+       Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Text(this.item.name,
+                style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
+            SizedBox(height: 30),
+            Text(this.item.combination,
+              style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
+            SizedBox(height: 10),
+            Text("price : " + this.item.price.toString(),
+              style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
+            SizedBox(height: 10),
+            Text("  amoumt : " + this.item.amount.toString(),
+              style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
+      ]
+    ),
+      ]
+    ),
     );
   }
 }
-

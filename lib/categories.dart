@@ -17,7 +17,6 @@ class _categoriesState extends State<categories> {
     double screenwidth= MediaQuery.of(context).size.width;
     Icon cusIcon = Icon(Icons.search);
     Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
-
     return  Scaffold(
       drawer: drawer(),
       appBar: AppBar(title: cusBar,
