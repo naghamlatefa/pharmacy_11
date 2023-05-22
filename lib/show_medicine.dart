@@ -6,6 +6,7 @@ import 'medicine_page.dart';
 class show_medicine extends StatelessWidget {
    show_medicine({Key? key }) : super(key: key);
   final items = medicine.getmedicines();
+   Icon cusIcon = Icon(Icons.search);
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,9 @@ class show_medicine extends StatelessWidget {
           color: Colors.white
         ),),
         backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+        actions: [IconButton(icon: cusIcon,
+            onPressed: (){
+            } )],
       ),
       body: ListView.builder(
         itemCount: items.length,

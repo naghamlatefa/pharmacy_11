@@ -10,7 +10,9 @@ class medicine_page extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(this.item.name),
+        title:  Text(this.item.name,
+            style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)
+          ),
         backgroundColor: Color.fromRGBO(90, 130, 95, 100),
       ),
       body:  Center(
@@ -20,10 +22,13 @@ class medicine_page extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(height: 30,),
               Center(
                 child: Image.asset("assets/" + this.item.image),
               ),
+
                 Container(
+
                   padding: EdgeInsets.all(1),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -36,15 +41,19 @@ class medicine_page extends StatelessWidget {
                         height: 30,
                       ),
 
-                      Text(this.item.combination),
+                      Text(this.item.combination,
+                          style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
                       SizedBox(
                         height: 30,
                       ),
-                      Text(" Price : " + this.item.price.toString()),
+                      Text(" Price : " + this.item.price.toString(),
+                          style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
                       SizedBox(
                         height: 30,
                       ),
-                      Text(" amount : " + this.item.amount.toString()),
+                      Text(" amount : " + this.item.amount.toString(),
+                          style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color:Color.fromRGBO(90, 130, 95, 100),)
+                      ),
                       SizedBox(
                         height: 30,
                       ),

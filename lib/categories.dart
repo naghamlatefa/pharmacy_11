@@ -88,7 +88,6 @@ class _categoriesState extends State<categories> {
             ],
           ),
           SizedBox(height: screenheight/32.125),
-
           Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               GestureDetector(onTap: (){},

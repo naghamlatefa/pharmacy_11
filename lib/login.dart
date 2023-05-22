@@ -152,58 +152,6 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                     /* Container(
-                          margin: EdgeInsets.symmetric(horizontal: 20),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(30),
-                            color: Color.fromRGBO(90, 130, 95, 100),
-                          ),
-                          child: MaterialButton(
-                            height: 50,
-                            onPressed: () {
-                              controllerlang.changelang("en");
-                            },
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.language,
-                                  color: Colors.white,),
-                                Text('English'.tr,
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 19,
-                                  ),),
-                              ],
-                            ),
-                          ),
-                      ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(30),
-                          color: Color.fromRGBO(90, 130, 95, 100),
-                        ),
-                        child: MaterialButton(
-                          height: 50,
-                          onPressed: () {
-                            controllerlang.changelang("ar");
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(Icons.language,
-                                color: Colors.white,),
-                              Text('Arabic'.tr,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: 19,
-                                ),),
-                            ],
-                          ),
-                        ),
-                      ),*/
                       TextButton(onPressed: () {
                         controllerlang.changelang("en");
                       },
