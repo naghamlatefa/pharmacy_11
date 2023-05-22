@@ -8,7 +8,7 @@ class medicine_page extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    /*return Scaffold(
       appBar: AppBar(
         title:  Text(this.item.name,
             style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)
@@ -26,9 +26,7 @@ class medicine_page extends StatelessWidget {
               Center(
                 child: Image.asset("assets/" + this.item.image),
               ),
-
                 Container(
-
                   padding: EdgeInsets.all(1),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -89,6 +87,109 @@ class medicine_page extends StatelessWidget {
           ),
         ),
       ),
+    ); */
+
+    return Scaffold(
+        appBar: AppBar(
+    title:  Text(this.item.name,
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)
+    ),
+    backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+    ),
+    body:  Center(
+    child :Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+        margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
+        width: MediaQuery
+            .of(context)
+            .size
+            .width,
+        height: 180,
+        decoration: BoxDecoration(
+        color: Color.fromRGBO(90, 130, 95, 100),
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+        BoxShadow(
+        color: Colors.black.withOpacity(0.6),
+        offset: Offset(
+        0.0,
+        10.0,
+        ),
+        blurRadius: 10.0,
+        spreadRadius: -6.0,
+        ),
+        ],
+        image: DecorationImage(
+        colorFilter: ColorFilter.mode(
+        Colors.black.withOpacity(0.35),
+        BlendMode.multiply,
+        ),
+        image: AssetImage("assets/"  + this.item.image),
+        fit: BoxFit.cover,
+        ),
+        ),
+        ),
+        Container(
+        padding: EdgeInsets.all(1),
+    child: Column(
+    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    children: [
+    SizedBox(
+    height: 10,
+    ),
+
+    SizedBox(
+    height: 30,
+    ),
+
+    Text(this.item.combination,
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
+    SizedBox(
+    height: 30,
+    ),
+    Text(" Price : " + this.item.price.toString(),
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
+    SizedBox(
+    height: 30,
+    ),
+    Text(" amount : " + this.item.amount.toString(),
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color:Color.fromRGBO(90, 130, 95, 100),)
+    ),
+    SizedBox(
+    height: 30,
+    ),
+    Container(
+    margin: EdgeInsets.symmetric(horizontal: 60),
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    color: Color.fromRGBO(90, 130, 95, 100),
+    ),
+    child: MaterialButton(
+    height: 50,
+    onPressed: () {},
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.center,
+    children: [
+    Icon(Icons.medical_services_sharp,
+    color: Colors.white,),
+    Text(' Add To Box',
+    style: TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.w600,
+    fontSize: 19,
+    ),),
+      ],
+    ),
+    ),
+    ),
+    ]
+    ),),
+    ]
+    ),
+    ),
     );
   }
 }
