@@ -38,7 +38,7 @@ class _loginState extends State<login> {
                           filled: true,
                           prefixIcon: Icon(Icons.email_outlined,
                             color: Color.fromRGBO(90, 130, 95, 100),),
-                          hintText: 'Email'.tr
+                          hintText: 'Email'.tr,hintStyle: TextStyle(fontFamily:'Kalam',)
                       ),
                       validator: (value){
                         if(value!.isEmpty){
@@ -64,7 +64,7 @@ class _loginState extends State<login> {
                           filled: true,
                           prefixIcon: Icon(Icons.lock_outline,
                             color: Color.fromRGBO(90, 130, 95, 100),),
-                          hintText: 'Password'.tr
+                          hintText: 'Password'.tr,hintStyle: TextStyle(fontFamily:'Kalam',)
                       ),
                       validator: (value){
                         if(value!.isEmpty){
@@ -89,7 +89,7 @@ class _loginState extends State<login> {
                       Text('Forgot Password  '.tr,
                         style: TextStyle(
                           fontSize: 12,
-                            color: Color.fromRGBO(90, 130, 95, 100)
+                            color: Color.fromRGBO(90, 130, 95, 100),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -126,7 +126,7 @@ class _loginState extends State<login> {
                               style: TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
-                                fontSize: 19,
+                                fontSize: 19,fontFamily:'Kalam',
                               ),),
                           ],
                         ),
@@ -137,13 +137,13 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Don\'t Have An Acount ?'.tr),
+                      Text('Don\'t Have An Acount ?'.tr,style: TextStyle(fontFamily:'Kalam'),),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> register()));
                       }, child:
                       Text('Register Now '.tr,
                         style: TextStyle(
-                            color: Color.fromRGBO(90, 130, 95, 100)
+                            color: Color.fromRGBO(90, 130, 95, 100),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -157,7 +157,7 @@ class _loginState extends State<login> {
                       },
                         child: Text('English'.tr,
                         style: TextStyle(
-                            color: Color.fromRGBO(90, 130, 95, 100)
+                            color: Color.fromRGBO(90, 130, 95, 100),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -166,7 +166,7 @@ class _loginState extends State<login> {
                       },
                         child: Text('Arabic'.tr,
                           style: TextStyle(
-                              color: Color.fromRGBO(90, 130, 95, 100)
+                              color: Color.fromRGBO(90, 130, 95, 100),fontFamily:'Kalam',
                           ),
                         ),
                       ),
