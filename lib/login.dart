@@ -108,7 +108,7 @@ class _loginState extends State<login> {
                         height: 50,
                         onPressed: () {
                           if(formkey.currentState!.validate()){
-                            Navigator.push(
+                            Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => categories(),

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget{
     Get.put(mylocalcontroller());
     return GetMaterialApp(
         debugShowCheckedModeBanner: false ,
-        home: show_medicine(),
+        home: login(),
       locale: Get.deviceLocale,
       translations : Mylocal(),
     );

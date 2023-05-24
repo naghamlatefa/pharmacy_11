@@ -234,7 +234,7 @@ import 'categories.dart';
                    height: 50,
                    onPressed: () {
                      if(formkey.currentState!.validate()){
-                       Navigator.push(
+                       Navigator.pushReplacement(
                          context,
                          MaterialPageRoute(
                            builder: (context) => categories(),
