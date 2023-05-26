@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'medicine.dart';
 import 'medicine_box.dart';
-
 import 'medicine_page.dart';
 class show_medicine extends StatelessWidget {
    show_medicine({Key? key }) : super(key: key);
   final items = medicine.getmedicines();
    Icon cusIcon = Icon(Icons.search);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +29,8 @@ class show_medicine extends StatelessWidget {
               MaterialPageRoute(builder: (context) => medicine_page(item :items[index])));
             },
           );
-
-
         }
         ),
-
-
       );
 
   }

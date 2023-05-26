@@ -18,7 +18,7 @@ import 'categories.dart';
      return Scaffold(
        appBar: AppBar(
          backgroundColor: Color.fromRGBO(90, 130, 95, 100),
-         title: Text('Register',style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700)),
+         title: Text('Register'),
          centerTitle: true,
        ),
        body: Form(
@@ -38,8 +38,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.abc,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Name',
-                   hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Name'
                  ),
                  validator: (value){
                    if(value!.isEmpty){
@@ -62,8 +61,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.email_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Email',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Email'
                  ),
                  validator: (value){
                    if(value!.isEmpty){
@@ -87,8 +85,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.lock_outline,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Password',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Password'
                  ),
                  controller: _pass,
                  validator: (value){
@@ -113,8 +110,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.lock_outline,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Confirm Password',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Confirm Password'
                  ),
                  controller: _confirm,
                  validator: (value){
@@ -141,8 +137,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.phone,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Email',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Email'
                  ),
                  validator: (value){
                    if(value!.isEmpty){
@@ -165,8 +160,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.home_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Address',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Address'
                  ),
                  validator: (value){
                    if(value!.isEmpty){
@@ -190,8 +184,7 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.calendar_month_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Age',
-                     hintStyle: TextStyle(fontFamily:'Kalam')
+                     hintText: 'Age'
                  ),
                  validator: (value){
                    if(value!.isEmpty){
@@ -213,13 +206,13 @@ import 'categories.dart';
                ),
                  hint:  Row(
                      children:<Widget> [SizedBox(width:10),Icon(Icons.person,
-                     color:Color.fromRGBO(90, 130, 95, 100) ,),SizedBox(width: 10,),Text("Gender",style: TextStyle(fontFamily:'Kalam'))]),
+                     color:Color.fromRGBO(90, 130, 95, 100) ,),SizedBox(width: 10,),Text("Gender")]),
                  isExpanded:true,
                  /*underline: Divider(color: Color.fromRGBO(90, 130, 95, 100),thickness: 2,),*/
                    items: ["Male","Female"].map((e) => DropdownMenuItem(child: Row(
                      children: [SizedBox(width: 10,),Icon(Icons.person,
                      color: Color.fromRGBO(90, 130, 95, 100),),SizedBox(width:10),
-                       Text("$e", style: TextStyle(fontFamily:'Kalam')),
+                       Text("$e"),
                      ],
                    ), value: e)).toList(), onChanged: (val){
                    setState(() {
@@ -241,7 +234,7 @@ import 'categories.dart';
                    height: 50,
                    onPressed: () {
                      if(formkey.currentState!.validate()){
-                       Navigator.push(
+                       Navigator.pushReplacement(
                          context,
                          MaterialPageRoute(
                            builder: (context) => categories(),
@@ -257,7 +250,6 @@ import 'categories.dart';
                          color: Colors.white,),
                        Text(' Sign Up',
                          style: TextStyle(
-                           fontFamily: 'Kalam',
                            color: Colors.white,
                            fontWeight: FontWeight.w600,
                            fontSize: 19,
