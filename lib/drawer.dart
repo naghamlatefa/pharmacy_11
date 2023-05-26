@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_1/reminders.dart';
+import 'package:pharmacy_1/categories.dart';
 
 class drawer extends StatelessWidget {
   const drawer({Key? key}) : super(key: key);
@@ -15,13 +17,13 @@ class drawer extends StatelessWidget {
             leading: Icon(Icons.person,color: Color.fromRGBO(90, 130, 95, 100),)
             ,title: Text('Profile',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
           )
-          ,ListTile(
+          ,ListTile(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => categories(),),);},
     leading: Icon(Icons.list,color: Color.fromRGBO(90, 130, 95, 100),)
     ,title: Text('Categories',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
     ), ListTile(
             leading: Icon(Icons.shopping_cart,color: Color.fromRGBO(90, 130, 95, 100),)
             ,title: Text('My Cart',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
-          ), ListTile(
+          ), ListTile(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => reminders(),),);},
             leading: Icon(Icons.access_time_outlined,color: Color.fromRGBO(90, 130, 95, 100),)
             ,title: Text('Reminders',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
           ),Divider(color: Color.fromRGBO(90, 130, 95, 100) )
@@ -29,7 +31,10 @@ class drawer extends StatelessWidget {
             leading: Icon(Icons.public,color: Color.fromRGBO(90, 130, 95, 100),)
             ,title: Text('About Us',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
           ),
-        ],
+          ListTile(
+            leading: Icon(Icons.exit_to_app_outlined,color: Color.fromRGBO(90, 130, 95, 100),)
+            ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
+          ), ],
       )
     );
   }
