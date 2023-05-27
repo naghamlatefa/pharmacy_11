@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
 
@@ -20,7 +21,7 @@ class drawer extends StatelessWidget {
           ,ListTile(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => categories(),),);},
     leading: Icon(Icons.list,color: Color.fromRGBO(90, 130, 95, 100),)
     ,title: Text('Categories',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
-    ), ListTile(
+    ), ListTile(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);},
             leading: Icon(Icons.shopping_cart,color: Color.fromRGBO(90, 130, 95, 100),)
             ,title: Text('My Cart',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Color.fromRGBO(90, 130, 95, 100)),),
           ), ListTile(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => reminders(),),);},

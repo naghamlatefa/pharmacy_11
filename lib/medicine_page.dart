@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'cart.dart';
+import 'cart_shopping.dart';
 import 'medicine.dart';
+import 'package:provider/provider.dart';
+import 'cart.dart';
 
 
 class medicine_page extends StatelessWidget {
@@ -85,31 +87,32 @@ class medicine_page extends StatelessWidget {
     borderRadius: BorderRadius.circular(20),
     color: Color.fromRGBO(90, 130, 95, 100),
     ),
-    child: MaterialButton(
-    height: 50,
-    onPressed: () {
-      Navigator.push(context, MaterialPageRoute(
-          builder: (context)=>cart(name1: this.item.name, price1: this.item.price),
-      )
-      );
-    },
-    child: Row(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-    Icon(Icons.shopping_cart,
-    color: Colors.white,),
-    Text(' Add To Cart',
-    style: TextStyle(
+    child: Consumer<cart>(
+        builder: (context,cart,child) {
+          return MaterialButton(
+            height: 50,
+            onPressed: () {
+              cart.add(item);
+              Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.shopping_cart,
+                  color: Colors.white,),
+                Text(' Add To Cart',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: 19,
+                  ),),
 
-    color: Colors.white,
-    fontWeight: FontWeight.w600,
-    fontSize: 19,
-    ),),
-      ],
-    ),
-    ),
-    ),
-    ]
+              ],
+            ),
+          );
+        }
+        ),
+    )]
     ),),
     ]
     ),

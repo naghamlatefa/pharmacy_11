@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'drawer.dart';
 import 'medicine.dart';
 import 'medicine_box.dart';
 import 'medicine_page.dart';
@@ -9,6 +10,7 @@ class show_medicine extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: drawer(),
       appBar: AppBar(
         title: Text(" Medicines ",
         style: TextStyle(
