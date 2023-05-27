@@ -15,20 +15,6 @@ class _chechoutState extends State<cart_shopping> {
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(90, 130, 95, 100),
           title: Text("Your Cart "),
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 10),
-              child: Consumer<cart>(builder: (context,cart,child){
-                return Text("${cart.totalprice}",
-                style: TextStyle(
-                  fontSize: 30,
-                 color: Colors.white,
-                 ),
-                 );
-                 }
-              ),
-            )
-          ],
         ),
         body: Consumer<cart>(
           builder: (context,cart,child){
@@ -76,13 +62,12 @@ class _chechoutState extends State<cart_shopping> {
                               Text("price : " + "${cart.basketitem[i].price}",
                                   style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
                               IconButton(
-                                icon: Icon(Icons.remove,
-                                color: Colors.white),
+                                icon: Icon(Icons.delete_forever,
+                                color: Colors.white,),
                                 onPressed: (){
                                   cart.remove(cart.basketitem[i]);
                                 },
                               ),
-
                             ]
                         ),
 
@@ -91,10 +76,49 @@ class _chechoutState extends State<cart_shopping> {
 
 
                 );
+
               },
                 );
           },
         ),
-    );
+      bottomNavigationBar:Container(
+        height: 80,
+        color: Colors.white,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Consumer<cart>(builder: (context,cart,child){
+              return  Expanded(
+                child: Text(" Total  Price:"+"${cart.totalprice}",
+                style: TextStyle(
+                  fontSize: 30,
+                  color: Color.fromRGBO(90, 130, 95, 100)
+                ),),
+              );
+            }),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Color.fromRGBO(90, 130, 95, 100),
+                    textStyle: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  child: Text("OK"),
+                  onPressed: () {
+
+                  },
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+
+          );
   }
 }

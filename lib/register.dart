@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'login.dart';
 import 'categories.dart';
  class register extends StatefulWidget {
@@ -18,7 +19,7 @@ import 'categories.dart';
      return Scaffold(
        appBar: AppBar(
          backgroundColor: Color.fromRGBO(90, 130, 95, 100),
-         title: Text('Register'),
+         title: Text('Register'.tr),
          centerTitle: true,
        ),
        body: Form(
@@ -38,11 +39,11 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.abc,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Name'
+                     hintText: 'Name'.tr
                  ),
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter your name';
+                     return 'Please enter your name'.tr;
                    }
                    return null;
                  } ,
@@ -61,11 +62,11 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.email_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Email'
+                     hintText: 'Email'.tr
                  ),
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter your Email';
+                     return "Email Must Not Be Empty".tr;
                    }
                    return null;
                  } ,
@@ -85,12 +86,12 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.lock_outline,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Password'
+                     hintText: 'Password'.tr
                  ),
                  controller: _pass,
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter a password';
+                     return "Password Must Not Be Empty".tr;
                    }
                    return null;
                  } ,
@@ -110,15 +111,15 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.lock_outline,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Confirm Password'
+                     hintText: 'Confirm Password'.tr
                  ),
                  controller: _confirm,
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please confirm your password';
+                     return 'Please confirm your password'.tr;
                    }
                    if (value!=_pass.text){
-                     return "Passwords don't match";
+                     return "Passwords don't match".tr;
                    }
                    return null;
                  } ,
@@ -128,6 +129,7 @@ import 'categories.dart';
              Padding(
                padding: const EdgeInsets.all(10.0),
                child: TextFormField(
+                 keyboardType: TextInputType.phone,
                  cursorColor: Color.fromRGBO(90, 130, 95, 100),
                  decoration: InputDecoration(
                      focusedBorder: OutlineInputBorder(
@@ -137,11 +139,11 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.phone,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Email'
+                     hintText: 'Phone'.tr
                  ),
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter your number';
+                     return 'Please enter your number'.tr;
                    }
                    return null;
                  } ,
@@ -160,11 +162,11 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.home_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Address'
+                     hintText: 'Address'.tr
                  ),
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter your address';
+                     return 'Please enter your address'.tr;
                    }
                    return null;
                  } ,
@@ -184,11 +186,11 @@ import 'categories.dart';
                      filled: true,
                      prefixIcon: Icon(Icons.calendar_month_outlined,
                        color: Color.fromRGBO(90, 130, 95, 100),),
-                     hintText: 'Age'
+                     hintText: 'Age'.tr
                  ),
                  validator: (value){
                    if(value!.isEmpty){
-                     return 'Please enter your age';
+                     return 'Please enter your age'.tr;
                    }
                    return null;
                  } ,
@@ -206,13 +208,13 @@ import 'categories.dart';
                ),
                  hint:  Row(
                      children:<Widget> [SizedBox(width:10),Icon(Icons.person,
-                     color:Color.fromRGBO(90, 130, 95, 100) ,),SizedBox(width: 10,),Text("Gender")]),
+                     color:Color.fromRGBO(90, 130, 95, 100) ,),SizedBox(width: 10,),Text("Gender".tr )]),
                  isExpanded:true,
                  /*underline: Divider(color: Color.fromRGBO(90, 130, 95, 100),thickness: 2,),*/
-                   items: ["Male","Female"].map((e) => DropdownMenuItem(child: Row(
+                   items: ["Male".tr,"Female".tr].map((e) => DropdownMenuItem(child: Row(
                      children: [SizedBox(width: 10,),Icon(Icons.person,
                      color: Color.fromRGBO(90, 130, 95, 100),),SizedBox(width:10),
-                       Text("$e"),
+                       Text("$e".tr),
                      ],
                    ), value: e)).toList(), onChanged: (val){
                    setState(() {
@@ -221,7 +223,7 @@ import 'categories.dart';
                    });
                  },
                  value: selectedgender,
-                     validator: (value) => value == null ? 'Please choose your gender' : null),
+                     validator: (value) => value == null ? 'Please choose your gender'.tr : null),
            ),
              SizedBox(height: 30,),
              Container(
@@ -248,7 +250,7 @@ import 'categories.dart';
                      children: [
                        Icon(Icons.login,
                          color: Colors.white,),
-                       Text(' Sign Up',
+                       Text(' Sign Up'.tr,
                          style: TextStyle(
                            color: Colors.white,
                            fontWeight: FontWeight.w600,
@@ -259,11 +261,11 @@ import 'categories.dart';
                  )),
              SizedBox(height: 30,),
              SizedBox(height: 300,width: 300,
-               child: ClipPath(
+             /*  child: ClipPath(
                  child: Image(
                    image: AssetImage('assets/login1.jpg'),
                  ),
-               ),
+               ),*/
              ),
            ],
          ),
