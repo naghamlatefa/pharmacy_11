@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pharmacy_1/login.dart';
 import 'forget_password.dart';
 class new_passoword extends StatefulWidget {
   const new_passoword({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _new_passowordState extends State<new_passoword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 100),
       ),
       body:Form(
         key: formkey,
@@ -29,7 +30,7 @@ class _new_passowordState extends State<new_passoword> {
               child: TextFormField(
                 controller: _pass,
                 obscureText: true,
-                cursorColor: Color.fromRGBO(90, 130, 95, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 100),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -37,8 +38,11 @@ class _new_passowordState extends State<new_passoword> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.lock_outline,
-                      color: Color.fromRGBO(90, 130, 95, 100),),
-                    hintText: ' New Password'
+                      color: Color.fromRGBO(13,142,171, 100),),
+                    hintText: ' New Password',
+                  hintStyle: TextStyle(
+                      fontFamily:'Kalam'
+                  )
                 ),
                 validator: (value){
                   if(value!.isEmpty){
@@ -56,7 +60,7 @@ class _new_passowordState extends State<new_passoword> {
               child: TextFormField(
                 controller: _confirm,
                 obscureText: true,
-                cursorColor: Color.fromRGBO(90, 130, 95, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 100),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -64,8 +68,11 @@ class _new_passowordState extends State<new_passoword> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.lock_outline,
-                      color: Color.fromRGBO(90, 130, 95, 100),),
-                    hintText: 'Confirm New Password'
+                      color: Color.fromRGBO(13,142,171, 100),),
+                    hintText: 'Confirm New Password',
+                  hintStyle: TextStyle(
+                      fontFamily:'Kalam'
+                  )
                 ),
                 validator: (value){
                   if(value!.isEmpty){
@@ -85,12 +92,18 @@ class _new_passowordState extends State<new_passoword> {
                 margin: EdgeInsets.symmetric(horizontal: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(90, 130, 95, 100),
+                  color: Color.fromRGBO(13,142,171, 100),
                 ),
                 child: MaterialButton(
                   height: 50,
                   onPressed: () {
                     if(formkey.currentState!.validate()){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => login(),
+                        ),
+                      );
 
 
                     }
@@ -103,6 +116,7 @@ class _new_passowordState extends State<new_passoword> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 19,
+                            fontFamily:'Kalam'
                         ),),
                     ],
                   ),

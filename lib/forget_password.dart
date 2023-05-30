@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'new_password.dart';
+import 'forget_password2.dart';
 class forget_password extends StatefulWidget {
   const forget_password({Key ? key}) : super(key: key);
 
@@ -12,7 +13,7 @@ class _forget_passwordState extends State<forget_password> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 100),
       ),
         body:Column(
           children: [
@@ -22,7 +23,7 @@ class _forget_passwordState extends State<forget_password> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
-                cursorColor: Color.fromRGBO(90, 130, 95, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 100),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -30,28 +31,10 @@ class _forget_passwordState extends State<forget_password> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.email_outlined,
-                      color: Color.fromRGBO(90, 130, 95, 100),),
-                    hintText: 'Gmail'
-                ),
-              ),
-            ),
-            SizedBox(
-              height: 30,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextFormField(
-                keyboardType: TextInputType.phone,
-                cursorColor: Color.fromRGBO(90, 130, 95, 100),
-                decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    fillColor: Color.fromRGBO(201, 201, 201, 100),
-                    filled: true,
-                    prefixIcon: Icon(Icons.verified,
-                      color: Color.fromRGBO(90, 130, 95, 100),),
-                    hintText: 'Code Verification '
+                      color: Color.fromRGBO(13,142,171, 100),),
+                    hintText: 'Gmail',hintStyle: TextStyle(
+                    fontFamily:'Kalam'
+                )
                 ),
               ),
             ),
@@ -62,7 +45,7 @@ class _forget_passwordState extends State<forget_password> {
                 margin: EdgeInsets.symmetric(horizontal: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(90, 130, 95, 100),
+                  color: Color.fromRGBO(13,142,171, 100),
                 ),
                 child: MaterialButton(
                   height: 50,
@@ -70,7 +53,7 @@ class _forget_passwordState extends State<forget_password> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => new_passoword(),
+                        builder: (context) => forget_password2(),
                       ),
                     );
                   },
@@ -82,6 +65,7 @@ class _forget_passwordState extends State<forget_password> {
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
                           fontSize: 19,
+                            fontFamily:'Kalam'
                         ),),
                     ],
                   ),
