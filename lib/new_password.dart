@@ -101,7 +101,7 @@ class _new_passowordState extends State<new_passoword> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => login(),
+                          builder: (context) =>  login(),
                         ),
                       );
 
