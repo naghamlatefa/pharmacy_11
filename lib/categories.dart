@@ -7,7 +7,7 @@ class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
 
   @override
-  State<categories> createState() => _categoriesState();
+  State<categories>  createState() => _categoriesState();
 }
 
 class _categoriesState extends State<categories> {
