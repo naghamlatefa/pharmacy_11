@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'new_password.dart';
 class forget_password2 extends StatefulWidget {
   const forget_password2({Key ? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _forget_password2State extends State<forget_password2> {
                   filled: true,
                   prefixIcon: Icon(Icons.verified,
                     color: Color.fromRGBO(13,142,171, 1),),
-                  hintText: 'Code Verification ',
+                  hintText: 'Code Verification '.tr,
                 hintStyle: TextStyle(
                     fontFamily:'Kalam'
                 )
@@ -61,7 +62,7 @@ class _forget_password2State extends State<forget_password2> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(' Done ',
+                    Text(' Done '.tr,
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.w600,

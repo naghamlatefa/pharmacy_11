@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'new_password.dart';
 import 'forget_password2.dart';
 class forget_password extends StatefulWidget {
@@ -32,7 +33,8 @@ class _forget_passwordState extends State<forget_password> {
                     filled: true,
                     prefixIcon: Icon(Icons.email_outlined,
                       color: Color.fromRGBO(13,142,171, 1),),
-                    hintText: 'Gmail',hintStyle: TextStyle(
+                    hintText: 'Email'.tr,
+                    hintStyle: TextStyle(
                     fontFamily:'Kalam'
                 )
                 ),
@@ -60,7 +62,7 @@ class _forget_passwordState extends State<forget_password> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(' Done ',
+                      Text(' Done '.tr,
                         style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w600,
