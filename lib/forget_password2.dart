@@ -12,7 +12,7 @@ class _forget_password2State extends State<forget_password2> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(13,142,171, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 1),
       ),
       body:Column(
         children: [
@@ -23,7 +23,7 @@ class _forget_password2State extends State<forget_password2> {
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(
               keyboardType: TextInputType.phone,
-              cursorColor: Color.fromRGBO(13,142,171, 100),
+              cursorColor: Color.fromRGBO(13,142,171, 1),
               decoration: InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20),
@@ -31,7 +31,7 @@ class _forget_password2State extends State<forget_password2> {
                   fillColor: Color.fromRGBO(201, 201, 201, 100),
                   filled: true,
                   prefixIcon: Icon(Icons.verified,
-                    color: Color.fromRGBO(13,142,171, 100),),
+                    color: Color.fromRGBO(13,142,171, 1),),
                   hintText: 'Code Verification ',
                 hintStyle: TextStyle(
                     fontFamily:'Kalam'
@@ -46,7 +46,7 @@ class _forget_password2State extends State<forget_password2> {
               margin: EdgeInsets.symmetric(horizontal: 60),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color.fromRGBO(13,142,171, 100),
+                color: Color.fromRGBO(13,142,171, 1),
               ),
               child: MaterialButton(
                 height: 50,

@@ -29,7 +29,7 @@ class _loginState extends State<login> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
-                      cursorColor: Color.fromRGBO(13,142,171, 100),
+                      cursorColor: Color.fromRGBO(13,142,171, 1),
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -37,7 +37,7 @@ class _loginState extends State<login> {
                           fillColor: Color.fromRGBO(201, 201, 201, 100),
                           filled: true,
                           prefixIcon: Icon(Icons.email_outlined,
-                            color: Color.fromRGBO(13,142,171, 100),),
+                            color: Color.fromRGBO(13,142,171, 1),),
                           hintText: 'Email'.tr,hintStyle: TextStyle(fontFamily:'Kalam',)
                       ),
                       validator: (value){
@@ -55,7 +55,7 @@ class _loginState extends State<login> {
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
                       obscureText: true,
-                      cursorColor: Color.fromRGBO(13,142,171, 100),
+                      cursorColor: Color.fromRGBO(13,142,171, 1),
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(20),
@@ -63,7 +63,7 @@ class _loginState extends State<login> {
                           fillColor: Color.fromRGBO(201, 201, 201, 100),
                           filled: true,
                           prefixIcon: Icon(Icons.lock_outline,
-                            color: Color.fromRGBO(13,142,171, 100),),
+                            color: Color.fromRGBO(13,142,171, 1),),
                           hintText: 'Password'.tr,hintStyle: TextStyle(fontFamily:'Kalam',)
                       ),
                       validator: (value){
@@ -89,7 +89,7 @@ class _loginState extends State<login> {
                       Text('Forgot Password  '.tr,
                         style: TextStyle(
                           fontSize: 12,
-                            color: Color.fromRGBO(13,142,171, 100),fontFamily:'Kalam',
+                            color: Color.fromRGBO(13,142,171, 1),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -102,7 +102,7 @@ class _loginState extends State<login> {
                       margin: EdgeInsets.symmetric(horizontal: 60),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Color.fromRGBO(13,142,171, 100),
+                        color: Color.fromRGBO(13,142,171, 1),
                       ),
                       child: MaterialButton(
                         height: 50,
@@ -141,7 +141,7 @@ class _loginState extends State<login> {
                       }, child:
                       Text('Register Now '.tr,
                         style: TextStyle(
-                            color: Color.fromRGBO(13,142,171, 100),fontFamily:'Kalam',
+                            color: Color.fromRGBO(13,142,171, 1),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -155,7 +155,7 @@ class _loginState extends State<login> {
                       },
                         child: Text('English'.tr,
                         style: TextStyle(
-                            color: Color.fromRGBO(13,142,171, 100),fontFamily:'Kalam',
+                            color: Color.fromRGBO(13,142,171, 1),fontFamily:'Kalam',
                         ),
                       ),
                       ),
@@ -164,7 +164,7 @@ class _loginState extends State<login> {
                       },
                         child: Text('Arabic'.tr,
                           style: TextStyle(
-                              color: Color.fromRGBO(12, 142, 174, 100),fontFamily:'Kalam',
+                              color: Color.fromRGBO(13,142,171, 1),fontFamily:'Kalam',
                           ),
                         ),
                       ),

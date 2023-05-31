@@ -13,7 +13,7 @@ class _forget_passwordState extends State<forget_password> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(13,142,171, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 1),
       ),
         body:Column(
           children: [
@@ -23,7 +23,7 @@ class _forget_passwordState extends State<forget_password> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
-                cursorColor: Color.fromRGBO(13,142,171, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 1),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -31,7 +31,7 @@ class _forget_passwordState extends State<forget_password> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.email_outlined,
-                      color: Color.fromRGBO(13,142,171, 100),),
+                      color: Color.fromRGBO(13,142,171, 1),),
                     hintText: 'Gmail',hintStyle: TextStyle(
                     fontFamily:'Kalam'
                 )
@@ -45,7 +45,7 @@ class _forget_passwordState extends State<forget_password> {
                 margin: EdgeInsets.symmetric(horizontal: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(13,142,171, 100),
+                  color: Color.fromRGBO(13,142,171, 1),
                 ),
                 child: MaterialButton(
                   height: 50,

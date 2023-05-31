@@ -20,7 +20,6 @@ class _categoriesState extends State<categories> {
 
           fillColor: Color.fromRGBO(201, 201, 201, 100),
           filled: true,
-
           hintText: 'Search...'
       ),);
   @override

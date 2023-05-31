@@ -15,7 +15,7 @@ class medicine_box extends StatelessWidget {
           .width,
       height: 180,
       decoration: BoxDecoration(
-        color: Color.fromRGBO(90, 130, 95, 100),
+        color: Color.fromRGBO(13,142,171, 1),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(

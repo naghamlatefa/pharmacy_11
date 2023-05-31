@@ -14,9 +14,10 @@ class show_medicine extends StatelessWidget {
       appBar: AppBar(
         title: Text(" Medicines ",
         style: TextStyle(
-          color: Colors.white
+          color: Colors.white,
+            fontFamily:'Kalam'
         ),),
-        backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 1),
         actions: [IconButton(icon: cusIcon,
             onPressed: (){
             } )],

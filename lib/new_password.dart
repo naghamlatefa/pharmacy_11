@@ -16,7 +16,7 @@ class _new_passowordState extends State<new_passoword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromRGBO(13,142,171, 100),
+        backgroundColor: Color.fromRGBO(13,142,171, 1),
       ),
       body:Form(
         key: formkey,
@@ -30,7 +30,7 @@ class _new_passowordState extends State<new_passoword> {
               child: TextFormField(
                 controller: _pass,
                 obscureText: true,
-                cursorColor: Color.fromRGBO(13,142,171, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 1),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -38,7 +38,7 @@ class _new_passowordState extends State<new_passoword> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.lock_outline,
-                      color: Color.fromRGBO(13,142,171, 100),),
+                      color: Color.fromRGBO(13,142,171, 1),),
                     hintText: ' New Password',
                   hintStyle: TextStyle(
                       fontFamily:'Kalam'
@@ -60,7 +60,7 @@ class _new_passowordState extends State<new_passoword> {
               child: TextFormField(
                 controller: _confirm,
                 obscureText: true,
-                cursorColor: Color.fromRGBO(13,142,171, 100),
+                cursorColor: Color.fromRGBO(13,142,171, 1),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(20),
@@ -68,7 +68,7 @@ class _new_passowordState extends State<new_passoword> {
                     fillColor: Color.fromRGBO(201, 201, 201, 100),
                     filled: true,
                     prefixIcon: Icon(Icons.lock_outline,
-                      color: Color.fromRGBO(13,142,171, 100),),
+                      color: Color.fromRGBO(13,142,171, 1),),
                     hintText: 'Confirm New Password',
                   hintStyle: TextStyle(
                       fontFamily:'Kalam'
@@ -92,7 +92,7 @@ class _new_passowordState extends State<new_passoword> {
                 margin: EdgeInsets.symmetric(horizontal: 60),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: Color.fromRGBO(13,142,171, 100),
+                  color: Color.fromRGBO(13,142,171, 1),
                 ),
                 child: MaterialButton(
                   height: 50,

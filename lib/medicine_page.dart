@@ -16,7 +16,7 @@ class medicine_page extends StatelessWidget {
     title:  Text(this.item.name,
     style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)
     ),
-    backgroundColor: Color.fromRGBO(90, 130, 95, 100),
+    backgroundColor: Color.fromRGBO(13,142,171, 1),
     ),
     body:  Center(
     child :Column(
@@ -31,7 +31,7 @@ class medicine_page extends StatelessWidget {
             .width,
         height: 180,
         decoration: BoxDecoration(
-        color: Color.fromRGBO(90, 130, 95, 100),
+        color: Color.fromRGBO(13,142,171, 1),
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
         BoxShadow(
@@ -66,17 +66,17 @@ class medicine_page extends StatelessWidget {
     height: 30,
     ),
     Text(this.item.combination,
-    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(13,142,171, 1),)),
     SizedBox(
     height: 30,
     ),
     Text(" Price : " + this.item.price.toString(),
-    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(90, 130, 95, 100),)),
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Color.fromRGBO(13,142,171, 1),)),
     SizedBox(
     height: 30,
     ),
     Text(" amount : " + this.item.amount.toString(),
-    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color:Color.fromRGBO(90, 130, 95, 100),)
+    style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color:Color.fromRGBO(13,142,171, 1),)
     ),
     SizedBox(
     height: 30,
@@ -85,7 +85,7 @@ class medicine_page extends StatelessWidget {
     margin: EdgeInsets.symmetric(horizontal: 60),
     decoration: BoxDecoration(
     borderRadius: BorderRadius.circular(20),
-    color: Color.fromRGBO(90, 130, 95, 100),
+    color: Color.fromRGBO(13,142,171, 1),
     ),
     child: Consumer<cart>(
         builder: (context,cart,child) {

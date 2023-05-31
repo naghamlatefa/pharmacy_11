@@ -13,8 +13,11 @@ class _chechoutState extends State<cart_shopping> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(90, 130, 95, 100),
-          title: Text("Your Cart "),
+          backgroundColor: Color.fromRGBO(13,142,171, 100),
+          title: Text("Your Cart ",
+          style: TextStyle(
+              fontFamily:'Kalam'
+          ),),
         ),
         body: Consumer<cart>(
           builder: (context,cart,child){
@@ -29,7 +32,7 @@ class _chechoutState extends State<cart_shopping> {
                       .width,
                   height: 180,
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(90, 130, 95, 100),
+                    color: Color.fromRGBO(13,142,171, 100),
                     borderRadius: BorderRadius.circular(15),
                     boxShadow: [
                       BoxShadow(
@@ -92,7 +95,8 @@ class _chechoutState extends State<cart_shopping> {
                 child: Text(" Total  Price:"+"${cart.totalprice}",
                 style: TextStyle(
                   fontSize: 30,
-                  color: Color.fromRGBO(90, 130, 95, 100)
+                  color: Color.fromRGBO(13,142,171, 1),
+                    fontFamily:'Kalam'
                 ),),
               );
             }),
@@ -101,14 +105,17 @@ class _chechoutState extends State<cart_shopping> {
                 padding: const EdgeInsets.only(bottom: 10),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color.fromRGBO(90, 130, 95, 100),
+                    primary: Color.fromRGBO(13,142,171, 1),
                     textStyle: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: Text("OK"),
+                  child: Text("OK"
+                  ,style: TextStyle(
+                        fontFamily:'Kalam'
+                    ),),
                   onPressed: () {
 
                   },
