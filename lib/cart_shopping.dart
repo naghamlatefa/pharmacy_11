@@ -13,7 +13,7 @@ class _chechoutState extends State<cart_shopping> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromRGBO(13,142,171, 100),
+          backgroundColor: Color.fromRGBO(13,142,171, 1),
           title: Text("Your Cart ",
           style: TextStyle(
               fontFamily:'Kalam'

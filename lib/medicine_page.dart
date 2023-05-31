@@ -93,7 +93,7 @@ class medicine_page extends StatelessWidget {
             height: 50,
             onPressed: () {
               cart.add(item);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
+
             },
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -105,6 +105,7 @@ class medicine_page extends StatelessWidget {
                     color: Colors.white,
                     fontWeight: FontWeight.w600,
                     fontSize: 19,
+                      fontFamily:'Kalam'
                   ),),
 
               ],
