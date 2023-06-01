@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:pharmacy_1/drawer.dart';
+
+
 class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
 
   @override
-  State<categories>  createState() => _categoriesState();
+  State<categories> createState() => _categoriesState();
 }
 
 class _categoriesState extends State<categories> {
@@ -13,11 +15,12 @@ class _categoriesState extends State<categories> {
   bool ispressed=false;
   Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
   Widget cusSearch= TextFormField(
-      cursorColor: Color.fromRGBO(90, 130, 95, 100),
+      cursorColor: Color.fromRGBO(13,142,171, 1),
       decoration: InputDecoration(
 
           fillColor: Color.fromRGBO(201, 201, 201, 100),
           filled: true,
+
           hintText: 'Search...'
       ),);
   @override
@@ -29,7 +32,7 @@ class _categoriesState extends State<categories> {
       drawer: drawer(),
       appBar: AppBar(title: ispressed? cusSearch:cusBar,
       centerTitle: true,
-      backgroundColor:  Color.fromRGBO(90, 130, 95, 100),
+      backgroundColor:  Color.fromRGBO(13,142,171, 1),
      actions: [ispressed? Row(
        children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
         , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
@@ -51,7 +54,7 @@ class _categoriesState extends State<categories> {
         children: <Widget> [Container(padding: EdgeInsets.all(screenheight/128.5),height: screenheight/4.3,width: screenwidth/1.09,
           child: Stack(
             children:<Widget> [Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage( fit: BoxFit.fill,image:AssetImage('assets/welcome5.jpg'))),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage( fit: BoxFit.fill,image:AssetImage('assets/welcome6.jpg'))),
             ),
            ],
           ),
