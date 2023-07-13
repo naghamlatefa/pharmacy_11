@@ -29,9 +29,11 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  http: ^0.13.4
   provider: ^6.0.5
   flutter:
     sdk: flutter
+  reminders: ^1.1.0
 
 
 

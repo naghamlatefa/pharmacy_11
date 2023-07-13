@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -5,14 +6,37 @@ import 'package:pharmacy_1/register.dart';
 import 'forget_password.dart';
 import 'local/local_controller.dart';
 import 'categories.dart';
+import 'package:http/http.dart' as http;
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
-
   @override
   State<login> createState() => _loginState();
 }
 class _loginState extends State<login> {
+  Future login(String email,String pass)async{
+    print("before");
+    var response=await http.post(
+      Uri.parse('http://192.168.43.169:8000/api/user/login'),
+          body: <String,String>
+        {
+        'email':email,
+        'password': pass
+    }
+    );
+    print("response is ${response.body}");
+    print("response is ${response.statusCode}");
+    if(response.statusCode==200){
+      var js=jsonDecode(response.body);
+      String token=js['token'];
+      print('the to;en is $token');
+    }
+    else{
+      print("sorry");
+    }
+  }
   var formkey = GlobalKey<FormState>();
+  var emailController=TextEditingController();
+  var passwordController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     mylocalcontroller controllerlang=Get.find();
@@ -29,6 +53,7 @@ class _loginState extends State<login> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
+                      controller: emailController,
                       cursorColor: Color.fromRGBO(13,142,171, 1),
                       decoration: InputDecoration(
                           focusedBorder: OutlineInputBorder(
@@ -54,6 +79,7 @@ class _loginState extends State<login> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: TextFormField(
+                      controller: passwordController,
                       obscureText: true,
                       cursorColor: Color.fromRGBO(13,142,171, 1),
                       decoration: InputDecoration(
@@ -107,6 +133,9 @@ class _loginState extends State<login> {
                       child: MaterialButton(
                         height: 50,
                         onPressed: () {
+                          print('pressed');
+                          login(emailController.text, passwordController.text);
+                          print('befor send request');
                           if(formkey.currentState!.validate()){
                             Navigator.pushReplacement(
                               context,
