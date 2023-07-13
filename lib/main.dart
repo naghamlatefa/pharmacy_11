@@ -6,7 +6,7 @@ import 'package:pharmacy_1/show_medicine.dart';
 import 'local/local_controller.dart';
 import 'local/local.dart';
 import 'package:provider/provider.dart';
-
+String Token='';
 void main() {
   runApp(MyApp());
 }

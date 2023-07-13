@@ -7,6 +7,8 @@ import 'forget_password.dart';
 import 'local/local_controller.dart';
 import 'categories.dart';
 import 'package:http/http.dart' as http;
+
+import 'main.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
   @override
@@ -27,8 +29,8 @@ class _loginState extends State<login> {
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
       var js=jsonDecode(response.body);
-      String token=js['token'];
-      print('the to;en is $token');
+      Token=js['token'];
+      //print('the to;en is $token');
     }
     else{
       print("sorry");
