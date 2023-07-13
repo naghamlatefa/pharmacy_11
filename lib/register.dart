@@ -14,6 +14,7 @@ import 'categories.dart';
    var formkey = GlobalKey<FormState>();
    final TextEditingController _pass= TextEditingController();
    final TextEditingController _confirm= TextEditingController();
+   bool is_supplier= false ;
    @override
    Widget build(BuildContext context) {
      return Scaffold(
@@ -235,6 +236,26 @@ import 'categories.dart';
            ),
              SizedBox(height: 30,),
              Container(
+               padding: EdgeInsets.all(10),
+               child: Row(
+                 children: [
+                   Text('supplier',style: TextStyle(
+                     fontFamily: 'Kalam',fontSize: 30,color: Color.fromRGBO(13,142,171, 1),
+                   ),),
+                   Checkbox(value:is_supplier , onChanged: (val){
+                     setState(() {
+                       is_supplier = val!;
+                     });
+
+                   },
+                     activeColor:Color.fromRGBO(13,142,171, 1),),
+
+                 ],
+               ),
+             ),
+             SizedBox(height: 30,),
+
+             Container(
                  margin: EdgeInsets.symmetric(horizontal: 60),
                  decoration: BoxDecoration(
                    borderRadius: BorderRadius.circular(20),
@@ -268,13 +289,8 @@ import 'categories.dart';
                    ),
                  )),
              SizedBox(height: 30,),
-             SizedBox(height: 300,width: 300,
-             /*  child: ClipPath(
-                 child: Image(
-                   image: AssetImage('assets/login1.jpg'),
-                 ),
-               ),*/
-             ),
+
+
            ],
          ),
        )

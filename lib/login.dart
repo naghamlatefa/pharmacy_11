@@ -30,6 +30,15 @@ class _loginState extends State<login> {
     if(response.statusCode==200){
       var js=jsonDecode(response.body);
       Token=js['token'];
+      if(formkey.currentState!.validate()){
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => categories(),
+          ),
+        );
+
+      }
       //print('the to;en is $token');
     }
     else{
