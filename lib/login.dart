@@ -152,7 +152,7 @@ class _loginState extends State<login> {
                             Icon(Icons.login,
                               color: Colors.white,),
                             Text(' Login'.tr,
-                              style: TextStyle(
+                              style:   TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w600,
                                 fontSize: 19,fontFamily:'Kalam',
