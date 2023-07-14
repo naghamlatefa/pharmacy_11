@@ -7,7 +7,6 @@ import 'forget_password.dart';
 import 'local/local_controller.dart';
 import 'categories.dart';
 import 'package:http/http.dart' as http;
-
 import 'main.dart';
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
@@ -28,18 +27,14 @@ class _loginState extends State<login> {
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => categories(),
+        ),
+      );
       var js=jsonDecode(response.body);
       Token=js['token'];
-      if(formkey.currentState!.validate()){
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => categories(),
-          ),
-        );
-
-      }
-      //print('the to;en is $token');
     }
     else{
       print("sorry");
@@ -145,16 +140,9 @@ class _loginState extends State<login> {
                         height: 50,
                         onPressed: () {
                           print('pressed');
-                          login(emailController.text, passwordController.text);
                           print('befor send request');
                           if(formkey.currentState!.validate()){
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => categories(),
-                              ),
-                            );
-
+                            login(emailController.text, passwordController.text);
                           }
                         },
                         child: Row(
