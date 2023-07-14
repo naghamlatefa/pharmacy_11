@@ -12,7 +12,7 @@ import 'main.dart';
  }
 
  class _registerState extends State<register> {
-   Future register(String name,String email,String password,String cpassword,String phone,String address,String age,String gender,bool supplier)async{
+   Future register(String name,String email,String password,String cpassword,String phone,String address,String age,String gender,int supplier)async{
      print('111');
      print("email $email");
      var response=await http.post(
@@ -31,6 +31,7 @@ import 'main.dart';
        },
        headers:{
          "Accept":"application/json",
+
        }
      );
      print("response is ${response.body}");
@@ -52,7 +53,6 @@ import 'main.dart';
        print("sorry");
      }
    }
-
    var selectedgender;
    var formkey = GlobalKey<FormState>();
    var name=TextEditingController();
@@ -62,8 +62,11 @@ import 'main.dart';
    var phone=TextEditingController();
    var address=TextEditingController();
    var age=TextEditingController();
- //  var gender=TextEditingController();
-   bool is_supplier= false ;
+   var gender=TextEditingController();
+   int is_supplier=0;
+   bool male = false;
+   bool female=false;
+
    @override
    Widget build(BuildContext context) {
      return Scaffold(
@@ -277,7 +280,7 @@ import 'main.dart';
                      color:Color.fromRGBO(13,142,171, 1) ,),SizedBox(width: 10,),Text("Gender".tr,  style:TextStyle(fontFamily: 'Kalam') )]),
                  isExpanded:true,
                  /*underline: Divider(color: Color.fromRGBO(90, 130, 95, 100),thickness: 2,),*/
-                   items: ["Male".tr,"Female".tr].map((e) => DropdownMenuItem(child: Row(
+                   items: ["male".tr,"female".tr].map((e) => DropdownMenuItem(child: Row(
                      children: [SizedBox(width: 10,),Icon(Icons.person,
                      color: Color.fromRGBO(13,142,171, 1),),SizedBox(width:10),
                        Text("$e".tr,style:TextStyle(fontFamily: 'Kalam')),
@@ -285,7 +288,7 @@ import 'main.dart';
                    ), value: e)).toList(), onChanged: (val){
                    setState(() {
                      selectedgender=val;
-                     //gender.text=val.toString();
+                     gender.text=val.toString();
 
                    });
                  },
@@ -301,10 +304,9 @@ import 'main.dart';
                    Text('supplier',style: TextStyle(
                      fontFamily: 'Kalam',fontSize: 30,color: Color.fromRGBO(13,142,171, 1),
                    ),),
-                   Checkbox(value:is_supplier , onChanged: (val){
-
+                   Checkbox(value:is_supplier==1 , onChanged: (val){
                      setState(() {
-                       is_supplier = val!;
+                       is_supplier = val! ? 1:0;
 
                      });
 
@@ -325,7 +327,7 @@ import 'main.dart';
                    height: 50,
                    onPressed: () {
                        if(formkey.currentState!.validate()){
-                        register(name.text,email.text,password.text,cpassword.text,phone.text,address.text,age.text,selectedgender,is_supplier);
+                        register(name.text,email.text,password.text,cpassword.text,phone.text,address.text,age.text,gender.text,is_supplier);
                        }
                    },
                    child: Row(
