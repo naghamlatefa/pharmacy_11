@@ -1,7 +1,9 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
 import 'package:pharmacy_1/drawer.dart';
-
+import 'package:http/http.dart' as http;
+import 'test.dart';
 
 class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
@@ -11,19 +13,36 @@ class categories extends StatefulWidget {
 }
 
 class _categoriesState extends State<categories> {
+  Future<categoriess> fetchAlbum() async {
+    print("before");
+    final response = await http
+        .get(Uri.parse('http://192.168.43.169:8000/api/user/asSupplier/category/all'));
+    print("response is ${response.body}");
+    print("response is ${response.statusCode}");
+    if (response.statusCode == 200) {
+
+      return categoriess.fromJson(jsonDecode(response.body));
+    } else {
+      print("sorry");
+      throw Exception('Failed to load album');
+    }
+  }
+  late Future<categoriess> futureAlbum;
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;
   Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
   Widget cusSearch= TextFormField(
       cursorColor: Color.fromRGBO(13,142,171, 1),
       decoration: InputDecoration(
-
           fillColor: Color.fromRGBO(201, 201, 201, 100),
           filled: true,
-
           hintText: 'Search...'
       ),);
   @override
+  void initState() {
+    super.initState();
+    futureAlbum = fetchAlbum();
+  }
   Widget build(BuildContext context) {
     double screenheight= MediaQuery.of(context).size.height;
     double screenwidth= MediaQuery.of(context).size.width;
@@ -49,7 +68,7 @@ class _categoriesState extends State<categories> {
     });
     })],
       ),
-      body:ListView(
+      /*ListView(
         padding: EdgeInsets.all(screenwidth/26),
         children: <Widget> [Container(padding: EdgeInsets.all(screenheight/128.5),height: screenheight/4.3,width: screenwidth/1.09,
           child: Stack(
@@ -200,7 +219,22 @@ class _categoriesState extends State<categories> {
             ],
           )
         ],
-      ),
+      ),*/
+      body:Center(
+        child: FutureBuilder<categoriess>(
+          future: futureAlbum,
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              return Text(snapshot.data!.name);
+            } else if (snapshot.hasError) {
+              return Text('${snapshot.error}');
+            }
+
+            // By default, show a loading spinner.
+            return const CircularProgressIndicator();
+          },
+        ),
+      ) ,
     );
   }
 }
