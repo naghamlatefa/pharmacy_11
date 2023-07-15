@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget{
     },
     child: GetMaterialApp(
         debugShowCheckedModeBanner: false ,
-        home:  categories(),
+        home:  login(),
       locale: Get.deviceLocale,
       translations : Mylocal(),
     ),

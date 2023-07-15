@@ -7,26 +7,29 @@ import 'test.dart';
 
 class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
-
   @override
   State<categories> createState() => _categoriesState();
 }
-
 class _categoriesState extends State<categories> {
   Future<categoriess> fetchAlbum() async {
     print("before");
-    final response = await http
-        .get(Uri.parse('http://192.168.43.169:8000/api/user/asSupplier/category/all'));
+    final response = await http.get(Uri.parse('http://192.168.43.169:8000/api/user/asSupplier/category/all'));
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if (response.statusCode == 200) {
-
       return categoriess.fromJson(jsonDecode(response.body));
     } else {
       print("sorry");
       throw Exception('Failed to load album');
     }
   }
+  /*Future getPost() async{
+    var Url="http://192.168.43.169:8000/api/user/asSupplier/category/all";
+    var response=await http.get(Url);
+    var responsebody=response.body;
+    print(responsebody);
+
+  }*/
   late Future<categoriess> futureAlbum;
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;
@@ -46,7 +49,6 @@ class _categoriesState extends State<categories> {
   Widget build(BuildContext context) {
     double screenheight= MediaQuery.of(context).size.height;
     double screenwidth= MediaQuery.of(context).size.width;
-
     return  Scaffold(
       drawer: drawer(),
       appBar: AppBar(title: ispressed? cusSearch:cusBar,
@@ -229,7 +231,6 @@ class _categoriesState extends State<categories> {
             } else if (snapshot.hasError) {
               return Text('${snapshot.error}');
             }
-
             // By default, show a loading spinner.
             return const CircularProgressIndicator();
           },

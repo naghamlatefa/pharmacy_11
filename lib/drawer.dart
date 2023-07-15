@@ -1,7 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
+import 'package:http/http.dart' as http;
+
+import 'main.dart';
 
 class drawer extends StatefulWidget {
   const drawer({Key? key}) : super(key: key);
@@ -11,6 +16,27 @@ class drawer extends StatefulWidget {
 }
 
 class _drawerState extends State<drawer> {
+  Future logout()async{
+    print("before");
+    var response=await http.post(
+        Uri.parse('http://192.168.43.169:8000/api/user/logout'),
+        headers:{
+          "Accept":"application/json",
+
+        }
+
+    );
+    print("response is ${response.body}");
+    print("response is ${response.statusCode}");
+    if(response.statusCode==200){
+
+      var js=jsonDecode(response.body);
+      Token=js['token'];
+    }
+    else{
+      print("sorry");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -62,9 +88,19 @@ class _drawerState extends State<drawer> {
             leading: Icon(Icons.public,color: Colors.black,)
             ,title: Text('About Us',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
           ),
-          ListTile(
-            leading: Icon(Icons.exit_to_app_outlined,color: Colors.black,)
-            ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+          Container(color: pagenumber==6?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+            child: ListTile(
+              onTap: (){
+                pagenumber=6;
+                print('pressed');
+                print('befor send request');
+                  logout();
+              },
+              leading: Icon(Icons.exit_to_app_outlined,color: Colors.black,)
+              ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
+
+            ),),
+            ),
           ), ],
       )
     );
