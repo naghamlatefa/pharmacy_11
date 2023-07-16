@@ -15,6 +15,7 @@ class categoriess {
     image: json['image'],
 
   );
+
   Map<String, dynamic>tojson() =>
       {
         'id':id,

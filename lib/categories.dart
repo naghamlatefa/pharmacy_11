@@ -232,7 +232,9 @@ class _categoriesState extends State<categories> {
               return Text('${snapshot.error}');
             }
             // By default, show a loading spinner.
-            return const CircularProgressIndicator();
+            return const CircularProgressIndicator(
+              color: Color.fromRGBO(13,142,171, 1),
+            );
           },
         ),
       ) ,
