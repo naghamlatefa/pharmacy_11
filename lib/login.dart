@@ -8,7 +8,6 @@ import 'local/local_controller.dart';
 import 'categories.dart';
 import 'package:http/http.dart' as http;
 import 'main.dart';
-
 class login extends StatefulWidget {
   const login({Key? key}) : super(key: key);
   @override
@@ -18,7 +17,7 @@ class _loginState extends State<login> {
   Future login(String email,String pass)async{
     print("before");
     var response=await http.post(
-      Uri.parse('http://192.168.43.169:8000/api/user/login'),
+      Uri.parse('$url/api/user/login'),
           body: <String,String>
         {
         'email':email,
@@ -27,33 +26,15 @@ class _loginState extends State<login> {
     );
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
-    if(response.statusCode==200){
+    if(response.statusCode==200&&r){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => categories(),
+        ),
+      );
       var js=jsonDecode(response.body);
-      String mes= js['message'];
-      Token = js['access_token'];
-      print(mes);
-      if(mes=='invalid Credentials'){
-       Stack(
-         children: [
-        AlertDialog(
-           title: Text("  "),
-           content: Text(" be"),
-         )
-
-         ],
-       );
-
-      }
-      else{
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => categories(),
-          ),
-        );
-      }
-      print(Token);
-
+      Token=js['token'];
     }
     else{
       print("sorry");

@@ -16,7 +16,7 @@ import 'main.dart';
      print('111');
      print("email $email");
      var response=await http.post(
-       Uri.parse('http://192.168.43.169:8000/api/user/register'),
+       Uri.parse('$url/api/user/login'),
        body:<String,String>{
          'name':name,
          'email':email,
