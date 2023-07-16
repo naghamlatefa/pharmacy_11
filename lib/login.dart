@@ -28,14 +28,32 @@ class _loginState extends State<login> {
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => categories(),
-        ),
-      );
       var js=jsonDecode(response.body);
-      Token=js['token'];
+      String mes= js['message'];
+      Token = js['access_token'];
+      print(mes);
+      if(mes=='invalid Credentials'){
+       Stack(
+         children: [
+        AlertDialog(
+           title: Text("  "),
+           content: Text(" be"),
+         )
+
+         ],
+       );
+
+      }
+      else{
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => categories(),
+          ),
+        );
+      }
+      print(Token);
+
     }
     else{
       print("sorry");

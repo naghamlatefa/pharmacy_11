@@ -4,6 +4,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:pharmacy_1/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'test.dart';
+import 'main.dart';
 
 class categories extends StatefulWidget {
   const categories({Key? key}) : super(key: key);
@@ -13,7 +14,13 @@ class categories extends StatefulWidget {
 class _categoriesState extends State<categories> {
   Future<categoriess> fetchAlbum() async {
     print("before");
-    final response = await http.get(Uri.parse('http://192.168.43.169:8000/api/user/asSupplier/category/all'));
+    final response = await http.get(Uri.parse('http://192.168.43.169:8000/api/user/asSupplier/category/all'),
+        headers:<String,String>{
+          "Accept":"application/json",
+          'Authorization':'Bearer $Token',
+        },
+    );
+
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if (response.statusCode == 200) {
@@ -23,13 +30,6 @@ class _categoriesState extends State<categories> {
       throw Exception('Failed to load album');
     }
   }
-  /*Future getPost() async{
-    var Url="http://192.168.43.169:8000/api/user/asSupplier/category/all";
-    var response=await http.get(Url);
-    var responsebody=response.body;
-    print(responsebody);
-
-  }*/
   late Future<categoriess> futureAlbum;
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;

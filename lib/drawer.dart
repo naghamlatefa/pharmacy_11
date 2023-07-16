@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
 import 'package:http/http.dart' as http;
-
 import 'main.dart';
 
 class drawer extends StatefulWidget {
@@ -17,21 +15,24 @@ class drawer extends StatefulWidget {
 
 class _drawerState extends State<drawer> {
   Future logout()async{
+    print(Token);
     print("before");
     var response=await http.post(
         Uri.parse('http://192.168.43.169:8000/api/user/logout'),
-        headers:{
+        headers:<String,String>{
           "Accept":"application/json",
+          'Authorization':'Bearer $Token',
+        },
+        body: jsonEncode(<String,dynamic>{
 
-        }
+    }),
 
     );
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
-
-      var js=jsonDecode(response.body);
-      Token=js['token'];
+      //var js=jsonDecode(response.body);
+      //Token=js['access_token'];
     }
     else{
       print("sorry");
