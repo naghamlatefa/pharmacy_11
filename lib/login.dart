@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:pharmacy_1/providerstorage.dart';
 import 'package:pharmacy_1/register.dart';
 import 'forget_password.dart';
 import 'local/local_controller.dart';
@@ -14,8 +15,8 @@ class login extends StatefulWidget {
   State<login> createState() => _loginState();
 }
 class _loginState extends State<login> {
+
   Future login(String email,String pass)async{
-    print("before");
     var response=await http.post(
       Uri.parse('$url/api/user/login'),
           body: <String,String>
@@ -24,18 +25,31 @@ class _loginState extends State<login> {
         'password': pass
     }
     );
+    var responsebody=jsonDecode(response.body);
+    print(responsebody['status']);
+    /*Token=js['token'];*/
+
+
+
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
-    if(response.statusCode==200&&r){
-      Navigator.pushReplacement(
+    if(response.statusCode==200){
+      issup=responsebody['User is Supplier'];
+      if(issup==0){Navigator.pushReplacement(
         context,
         MaterialPageRoute(
           builder: (context) => categories(),
         ),
-      );
-      var js=jsonDecode(response.body);
-      Token=js['token'];
+      );}
+      else if(issup==1){Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => provstorage(),
+        ),
+      );}
+
     }
+
     else{
       print("sorry");
     }

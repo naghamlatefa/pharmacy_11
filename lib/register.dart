@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pharmacy_1/login.dart';
 import 'categories.dart';
 import 'package:http/http.dart' as http;
 import 'main.dart';
@@ -16,7 +17,7 @@ import 'main.dart';
      print('111');
      print("email $email");
      var response=await http.post(
-       Uri.parse('$url/api/user/login'),
+       Uri.parse('$url/api/user/register'),
        body:<String,String>{
          'name':name,
          'email':email,
@@ -41,7 +42,7 @@ import 'main.dart';
        Navigator.pushReplacement(
          context,
          MaterialPageRoute(
-           builder: (context) => categories(),
+           builder: (context) => login(),
          ),
        );
        var js= jsonDecode (response.body);
