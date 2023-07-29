@@ -34,6 +34,9 @@ dependencies:
   flutter:
     sdk: flutter
   reminders: ^1.1.0
+  cron:
+  awesome_notifications:
+
 
 
 
@@ -44,7 +47,7 @@ dependencies:
   get: ^4.6.5
 
   bordered_text: ^2.0.0
-  image_picker: ^1.0.1
+
 
 
 dev_dependencies:
