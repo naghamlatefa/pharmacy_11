@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pharmacy_1/drawer.dart';
-//import 'package:pharmacy_1/medreminder.dart';
+import 'package:pharmacy_1/medreminder.dart';
 
 class reminders extends StatefulWidget {
   const reminders({Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _remindersState extends State<reminders> {
           ],
         ),Column(
           children: [
-           // GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => medreminder(),),);},child: Container(height: screenwidth/2.35,width: screenwidth/2.35,decoration: BoxDecoration(image:DecorationImage(fit:BoxFit.fill,image: AssetImage('assets/medicine.jpg')),borderRadius: BorderRadius.circular(360),color:Color.fromRGBO(13,142,171, 1) ),)),
+            GestureDetector(onTap: (){Navigator.push(context, MaterialPageRoute(builder: (context) => medreminder(),),);},child: Container(height: screenwidth/2.35,width: screenwidth/2.35,decoration: BoxDecoration(image:DecorationImage(fit:BoxFit.fill,image: AssetImage('assets/medicine.jpg')),borderRadius: BorderRadius.circular(360),color:Color.fromRGBO(13,142,171, 1) ),)),
             Text('Medicine',style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Color.fromRGBO(13,142,171, 1),fontSize: screenwidth/26.6),)],
         )],)],)),),
     );

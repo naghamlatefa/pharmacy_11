@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
+import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
 import 'package:http/http.dart' as http;
@@ -31,8 +32,14 @@ class _drawerState extends State<drawer> {
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
-      //var js=jsonDecode(response.body);
-      //Token=js['access_token'];
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => login(),
+        ),
+      );
+      var js=jsonDecode(response.body);
+      Token=js['access_token'];
     }
     else{
       print("sorry");

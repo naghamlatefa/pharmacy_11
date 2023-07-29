@@ -6,6 +6,7 @@ import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
 import 'package:http/http.dart' as http;
 import 'allmeds.dart';
+import 'login.dart';
 import 'main.dart';
 
 class sdrawer extends StatefulWidget {
@@ -33,6 +34,12 @@ class _sdrawerState extends State<sdrawer> {
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => login(),
+        ),
+      );
       //var js=jsonDecode(response.body);
       //Token=js['access_token'];
     }

@@ -34,6 +34,8 @@ class _loginState extends State<login> {
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
+      var js=jsonDecode(response.body);
+      Token=js['access_token'];
       issup=responsebody['User is Supplier'];
       if(issup==0){Navigator.pushReplacement(
         context,
