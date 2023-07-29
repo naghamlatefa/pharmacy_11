@@ -29,8 +29,6 @@ class _loginState extends State<login> {
     print(responsebody['status']);
     /*Token=js['token'];*/
 
-
-
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
