@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/reminders.dart';
@@ -49,64 +48,54 @@ class _drawerState extends State<drawer> {
 
   @override
   Widget build(BuildContext context) {
-    Color selectioncolor1=Colors.transparent;
-    Color selectioncolor2=Colors.transparent;
-    Color selectioncolor3=Colors.transparent;
-    Color selectioncolor4=Colors.transparent;
-    int pagenumber=0;
+
+
 
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
         children: [
-          UserAccountsDrawerHeader(accountName: Text('Abd',style: TextStyle(fontFamily: 'Kalam',fontSize: 30),), accountEmail: Text('Pharmacy.com',style: TextStyle(fontFamily: 'Kalam',fontSize: 25)),
+          UserAccountsDrawerHeader(accountName: Text('User',style: TextStyle(fontFamily: 'Kalam',fontSize: 30),), accountEmail: Text('Pharmalytics',style: TextStyle(fontFamily: 'Kalam',fontSize: 25)),
           decoration: BoxDecoration(color: Color.fromRGBO(13,142,171, 1)),),
-          Container(color: pagenumber==1?Color.fromRGBO(13,142,171, 1):Colors.transparent,
-            child: ListTile(onTap: (){setState(() {
-             pagenumber=1;
-            });},
-              leading: Icon(Icons.person,color: Colors.black,)
-              ,title: Text('Profile'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
-            ),
-          )
-          ,Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent
-            ,child: ListTile(onTap: (){setState(() {pagenumber=2;
+
+          Container(color: pagenumber==1?Color.fromRGBO(13,142,171, 1):Colors.transparent
+            ,child: ListTile(onTap: (){setState(() {pagenumber=1;
 
               Navigator.push(context, MaterialPageRoute(builder: (context) => categories(),),);
             });},
     leading: Icon(Icons.list,color: Colors.black,)
-    ,title: Text('Categories'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+    ,title: Text('Categories',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
     ),
-          ), Container(color: pagenumber==3?Color.fromRGBO(13,142,171, 1):Colors.transparent,
-            child: ListTile(onTap: (){setState(() {pagenumber=3;
+          ), Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+            child: ListTile(onTap: (){setState(() {pagenumber=2;
               Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
             });},
               leading: Icon(Icons.shopping_cart,color: Colors.black,)
-              ,title: Text('My Cart'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('My Cart',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
-          ), Container(color: pagenumber==4?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+          ), Container(color: pagenumber==3?Color.fromRGBO(13,142,171, 1):Colors.transparent,
             child: ListTile(onTap: (){setState(() {
-              pagenumber=4;
+              pagenumber=3;
               Navigator.push(context, MaterialPageRoute(builder: (context) => reminders(),),);
             });},
               leading: Icon(Icons.access_time_outlined,color: Colors.black,)
-              ,title: Text('Reminders'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('Reminders',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
           ),Divider(color: Color.fromRGBO(13,142,171, 1) )
     , ListTile(
             leading: Icon(Icons.public,color: Colors.black,)
-            ,title: Text('About Us'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+            ,title: Text('About Us',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
           ),
-          Container(color: pagenumber==6?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+          Container(color: pagenumber==5?Color.fromRGBO(13,142,171, 1):Colors.transparent,
             child: ListTile(
               onTap: (){
-                pagenumber=6;
+                pagenumber=5;
                 print('pressed');
                 print('befor send request');
                   logout();
               },
               leading: Icon(Icons.exit_to_app_outlined,color: Colors.black,)
-              ,title: Text('Sign Out'.tr  ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
+              ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
 
             ),),
             ),

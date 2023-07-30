@@ -55,7 +55,7 @@ class _sdrawerState extends State<sdrawer> {
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
-            UserAccountsDrawerHeader(accountName: Text('Abd',style: TextStyle(fontFamily: 'Kalam',fontSize: 30),), accountEmail: Text('Pharmacy.com',style: TextStyle(fontFamily: 'Kalam',fontSize: 25)),
+            UserAccountsDrawerHeader(accountName: Text('Supplier',style: TextStyle(fontFamily: 'Kalam',fontSize: 30),), accountEmail: Text('Pharmalytics',style: TextStyle(fontFamily: 'Kalam',fontSize: 25)),
               decoration: BoxDecoration(color: Color.fromRGBO(13,142,171, 1)),),
             Container(color: pagenumber==1?Color.fromRGBO(13,142,171, 1):Colors.transparent,
               child: ListTile(onTap: (){setState(() {
