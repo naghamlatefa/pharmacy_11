@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pharmacy_1/cart.dart';
 import 'package:provider/provider.dart';
 import 'medicine.dart';
@@ -14,7 +15,7 @@ class _chechoutState extends State<cart_shopping> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(13,142,171, 1),
-          title: Text("Your Cart ",
+          title: Text("Your Cart".tr,
           style: TextStyle(
               fontFamily:'Kalam'
           ),),
@@ -92,7 +93,7 @@ class _chechoutState extends State<cart_shopping> {
           children: [
             Consumer<cart>(builder: (context,cart,child){
               return  Expanded(
-                child: Text(" Total  Price:"+"${cart.totalprice}",
+                child: Text(" Total  Price:".tr+"${cart.totalprice}",
                 style: TextStyle(
                   fontSize: 30,
                   color: Color.fromRGBO(13,142,171, 1),
@@ -112,7 +113,7 @@ class _chechoutState extends State<cart_shopping> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  child: Text("OK"
+                  child: Text("OK".tr
                   ,style: TextStyle(
                         fontFamily:'Kalam'
                     ),),

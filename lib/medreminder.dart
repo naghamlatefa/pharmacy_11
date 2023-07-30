@@ -1,6 +1,7 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pharmacy_1/drawer.dart';
 
 class medreminder extends StatefulWidget {
@@ -62,13 +63,13 @@ class _medreminderState extends State<medreminder> {
       drawer: drawer(),
         appBar: AppBar(
           backgroundColor: Color.fromRGBO(13,142,171, 1),
-          title: Text('Medicine Reminder',style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
+          title: Text('Medicine Reminder'.tr,style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
           centerTitle: true,
         ),
       body: Container(
         padding:EdgeInsets.all(screenwidth/26),
         child: ListView(children: [
-          Column(children: [Text('What Times do you take your medicine?',
+          Column(children: [Text('What Times do you take your medicine?'.tr,
             style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Color.fromRGBO(13,142,171, 1),fontSize: screenwidth/20),),
             SizedBox(
               height: 30,
@@ -79,7 +80,7 @@ class _medreminderState extends State<medreminder> {
                 Text(_timeOfDay.format(context).toString(),
                   style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Color.fromRGBO(13,142,171, 1),fontSize: 40),),
                 MaterialButton(onPressed:_showTimePicker,
-                child: Text("PICK TIME",
+                child: Text("PICK TIME".tr ,
                   style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Colors.white,
 
                 ),),

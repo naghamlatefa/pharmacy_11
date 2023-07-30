@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/reminders.dart';
@@ -65,7 +66,7 @@ class _drawerState extends State<drawer> {
              pagenumber=1;
             });},
               leading: Icon(Icons.person,color: Colors.black,)
-              ,title: Text('Profile',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('Profile'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
           )
           ,Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent
@@ -74,14 +75,14 @@ class _drawerState extends State<drawer> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => categories(),),);
             });},
     leading: Icon(Icons.list,color: Colors.black,)
-    ,title: Text('Categories',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+    ,title: Text('Categories'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
     ),
           ), Container(color: pagenumber==3?Color.fromRGBO(13,142,171, 1):Colors.transparent,
             child: ListTile(onTap: (){setState(() {pagenumber=3;
               Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
             });},
               leading: Icon(Icons.shopping_cart,color: Colors.black,)
-              ,title: Text('My Cart',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('My Cart'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
           ), Container(color: pagenumber==4?Color.fromRGBO(13,142,171, 1):Colors.transparent,
             child: ListTile(onTap: (){setState(() {
@@ -89,12 +90,12 @@ class _drawerState extends State<drawer> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => reminders(),),);
             });},
               leading: Icon(Icons.access_time_outlined,color: Colors.black,)
-              ,title: Text('Reminders',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('Reminders'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
           ),Divider(color: Color.fromRGBO(13,142,171, 1) )
     , ListTile(
             leading: Icon(Icons.public,color: Colors.black,)
-            ,title: Text('About Us',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+            ,title: Text('About Us'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
           ),
           Container(color: pagenumber==6?Color.fromRGBO(13,142,171, 1):Colors.transparent,
             child: ListTile(
@@ -105,7 +106,7 @@ class _drawerState extends State<drawer> {
                   logout();
               },
               leading: Icon(Icons.exit_to_app_outlined,color: Colors.black,)
-              ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
+              ,title: Text('Sign Out'.tr  ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
 
             ),),
             ),

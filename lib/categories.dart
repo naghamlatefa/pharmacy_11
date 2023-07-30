@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:bordered_text/bordered_text.dart';
+import 'package:get/get.dart';
 import 'package:pharmacy_1/drawer.dart';
 import 'package:http/http.dart' as http;
 import 'test.dart';
@@ -33,7 +34,7 @@ class _categoriesState extends State<categories> {
   late Future<categoriess> futureAlbum;
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;
-  Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
+  Widget cusBar= Text("Categories".tr,style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
   Widget cusSearch= TextFormField(
       cursorColor: Color.fromRGBO(13,142,171, 1),
       decoration: InputDecoration(
