@@ -30,11 +30,8 @@ class _commentsState extends State<comments> {
     print("response is ${response.statusCode}");
     if(response.statusCode==200)
     {
-
       var js=jsonDecode(response.body);
       print('success');
-
-
 
     }
     else
@@ -169,7 +166,7 @@ class commentslist extends StatelessWidget{
         "nagham",
       ),
       ),
-      subtitle: Container(padding: EdgeInsets.all(10),color: Colors.grey[100],child: Text("how much price")),
+      subtitle: Container(padding: EdgeInsets.all(10),color: Colors.grey[100],child: Text(comment)),
     );
 
 
