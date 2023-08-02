@@ -13,7 +13,17 @@ class categories extends StatefulWidget {
   State<categories> createState() => _categoriesState();
 }
 class _categoriesState extends State<categories> {
+ Future searchmeds() async{
+   var response = await http.get(Uri.parse('$url/api/user/show_medicines/}'),
+       headers:<String,String>{
+         'Authorization': 'Bearer $Token',
+       });
+   var responsebody=jsonDecode(response.body);
+   setState(() {
 
+
+   });
+ }
 
 
   @override
@@ -30,7 +40,7 @@ class _categoriesState extends State<categories> {
       centerTitle: true,
       backgroundColor:  Color.fromRGBO(13,142,171, 1),
      actions: <Widget>[IconButton(icon: Icon(Icons.search),
-      onPressed: (){},
+      onPressed: (){showSearch(context: context, delegate: MedSearch());},
     )]),
 
 
@@ -224,4 +234,33 @@ class _categoriesState extends State<categories> {
 
     );
   }
+}
+class MedSearch extends SearchDelegate<String>{
+  @override
+  List<Widget>? buildActions(BuildContext context) {
+    return [
+      IconButton(onPressed: (){}, icon: Icon(Icons.clear))
+    ];
+  }
+
+  @override
+  Widget? buildLeading(BuildContext context) {
+    // TODO: implement buildLeading
+    return IconButton(onPressed: (){
+      close(context, '');
+    }, icon: Icon(Icons.arrow_back));
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    // TODO: implement buildResults
+    throw UnimplementedError();
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    // TODO: implement buildSuggestions
+    return Text("body")
+;  }
+
 }

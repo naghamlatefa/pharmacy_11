@@ -52,6 +52,18 @@ import 'main.dart';
 
      ;
    }
+   Future deletemed(int meddID) async{
+     var response1 = await http.delete(Uri.parse('$url/api/user/asSupplier/medicine/delete/$meddID'),headers:<String,String>{
+       'Authorization': 'Bearer $Token',
+     });
+
+     if (response1.statusCode==200){
+       print("deleted");}
+     else {
+       print("error deleting");
+       print(response1.body);
+     }
+   }
    var formkey = GlobalKey<FormState>();
    var QuantityController = TextEditingController();
    var ExpController = TextEditingController();
@@ -103,36 +115,37 @@ import 'main.dart';
      double screenwidth= MediaQuery.of(context).size.width;
      return Scaffold(
          drawer: sdrawer(),
-         appBar: AppBar(title: ispressed? cusSearch:cusBar,
+         appBar: AppBar(title:Text("All Medicines",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
            centerTitle: true,
-           backgroundColor:  Color.fromRGBO(13,142,171, 1),
-           actions: [ispressed? Row(
-             children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
-               , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-                   onPressed: (){
-                     setState(() {
-                       ispressed= !ispressed;
-                     });
-                   } ),
-             ],
-           ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-               onPressed: (){
-                 setState(() {
-                   ispressed= !ispressed;
-                 });
-               })],
-         ),
+           actions: [IconButton(icon: Icon(Icons.search),
+       onPressed: (){},
+     )],
+           ),
          body:
          allmeds==null || allmeds.isEmpty? Center(child: CircularProgressIndicator()):
          ListView.builder(
              itemCount: allmeds[0].length
              ,itemBuilder: (context,i){
-           return GestureDetector(onTap: () {},
-             child: Container(color: Color.fromRGBO(35, 33, 30, 0.1),padding: EdgeInsets.all(screenheight/60),width: screenwidth,height: screenheight/5 ,child: ListView(physics: NeverScrollableScrollPhysics(),
-               children: [
-                 Row(mainAxisAlignment: MainAxisAlignment.start,children: [Container(child: Image.network('${allmeds[0][i]['name']}'),height: screenheight/6,width: screenwidth/4,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),),SizedBox(width: screenwidth/25,),Container(width: screenwidth/3,child: Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [Text('${allmeds[0][i]['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/48,fontFamily: 'Kalam',fontWeight: FontWeight.bold),),Text('Dosage Type: +${allmeds[0][i]['dosageForm']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Dosage: +${allmeds[0][i]['strength']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Active Ingredient: +${allmeds[0][i]['ActiveIngredient']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam'))],)),Container(width: screenwidth/4,child: Column(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.center,children: [Text('Price: +${allmeds[0][i]['sellingPrice']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight:FontWeight.bold )),SizedBox(height: screenheight/138,),RawMaterialButton(onPressed: (){openDialogue1(context, allmeds[0][i]['id']);},elevation: 2,fillColor: Color.fromRGBO(13,142,171, 1),child: Icon(Icons.add,color: Colors.white,size: screenwidth/16,),shape: CircleBorder(),)],))],),
-                 SizedBox(height: screenheight/138,),Divider(color: Color.fromRGBO(13,142,171, 1),)],
-             ),),
+           return Dismissible(
+             key: Key(i.toString()),
+             direction: DismissDirection.endToStart,
+             onDismissed: (direction){
+               if (direction==DismissDirection.endToStart){
+                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content:Text('${allmeds[0][i]['name']} has been deleted')));
+                 deletemed(allmeds[0][i]['id']);
+               }
+             },
+             background: Container(color: Colors.red,child: Align(alignment: Alignment.centerRight,child: Padding(
+               padding: EdgeInsets.all(screenwidth/8),
+               child: Icon(Icons.delete,color: Colors.white,),
+             ),)),
+             child: GestureDetector(onTap: () {},
+               child: Container(color: Color.fromRGBO(35, 33, 30, 0.1),padding: EdgeInsets.all(screenheight/60),width: screenwidth,height: screenheight/5 ,child: ListView(physics: NeverScrollableScrollPhysics(),
+                 children: [
+                   Row(mainAxisAlignment: MainAxisAlignment.start,children: [Container(child: Image.network('${allmeds[0][i]['name']}'),height: screenheight/6,width: screenwidth/4,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30)),),SizedBox(width: screenwidth/25,),Container(width: screenwidth/3,child: Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [Text('${allmeds[0][i]['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/48,fontFamily: 'Kalam',fontWeight: FontWeight.bold),),Text('Dosage Type: +${allmeds[0][i]['dosageForm']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Dosage: +${allmeds[0][i]['strength']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Active Ingredient: +${allmeds[0][i]['ActiveIngredient']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam'))],)),Container(width: screenwidth/4,child: Column(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.center,children: [Text('Price: +${allmeds[0][i]['sellingPrice']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight:FontWeight.bold )),SizedBox(height: screenheight/138,),RawMaterialButton(onPressed: (){openDialogue1(context, allmeds[0][i]['id']);},elevation: 2,fillColor: Color.fromRGBO(13,142,171, 1),child: Icon(Icons.add,color: Colors.white,size: screenwidth/16,),shape: CircleBorder(),)],))],),
+                   SizedBox(height: screenheight/138,),Divider(color: Color.fromRGBO(13,142,171, 1),)],
+               ),),
+             ),
            );
 
          }

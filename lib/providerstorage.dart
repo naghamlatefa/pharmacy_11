@@ -114,25 +114,12 @@ class _provstorageState extends State<provstorage> {
     double screenwidth= MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: sdrawer(),
-      appBar: AppBar(title: ispressed? cusSearch:cusBar,
-      centerTitle: true,
-      backgroundColor:  Color.fromRGBO(13,142,171, 1),
-      actions: [ispressed? Row(
-        children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
-          , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-              onPressed: (){
-                setState(() {
-                  ispressed= !ispressed;
-                });
-              } ),
-        ],
-      ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-          onPressed: (){
-            setState(() {
-              ispressed= !ispressed;
-            });
-          })],
-    ),
+      appBar: AppBar(title:Text("All Medicines",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
+        centerTitle: true,
+        actions: [IconButton(icon: Icon(Icons.search),
+          onPressed: (){},
+        )],
+      ),
       body:
       Smeds==null || Smeds.isEmpty? Center(child: CircularProgressIndicator()):
 
