@@ -4,15 +4,18 @@ import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
 import 'package:pharmacy_1/addamed.dart';
+import 'package:pharmacy_1/smsearchresults.dart';
+import 'package:pharmacy_1/ssearchresult.dart';
 import 'package:pharmacy_1/suppdrawer.dart';
 import 'package:pharmacy_1/supplyinfo.dart';
 import 'main.dart';
+
  class allmeds extends StatefulWidget {
    const allmeds({Key? key}) : super(key: key);
 
    @override
    State<allmeds> createState() => _allmedsState();
- }
+ }var search=TextEditingController();
 
  class _allmedsState extends State<allmeds> {
    List allmeds=[];
@@ -98,7 +101,8 @@ import 'main.dart';
    bool ispressed=false;
    Widget cusBar= Text("All Medicines",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
    Widget cusSearch= TextFormField(
-     cursorColor: Color.fromRGBO(13,142,171, 1),
+     controller: search,
+     cursorColor:  Color.fromRGBO(13,142,171, 1),
      decoration: InputDecoration(
          fillColor: Color.fromRGBO(201, 201, 201, 100),
          filled: true,
@@ -115,12 +119,30 @@ import 'main.dart';
      double screenwidth= MediaQuery.of(context).size.width;
      return Scaffold(
          drawer: sdrawer(),
-         appBar: AppBar(title:Text("All Medicines",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
-           centerTitle: true,
-           actions: [IconButton(icon: Icon(Icons.search),
-       onPressed: (){},
-     )],
-           ),
+       appBar: AppBar(title: ispressed? cusSearch:cusBar,
+       centerTitle: true,
+       backgroundColor:  Color.fromRGBO(13,142,171, 1),
+       actions: [ispressed? Row(
+         children: [IconButton(onPressed: (){
+           Navigator.push(
+               context,
+               MaterialPageRoute(
+                   builder: (context) => smsearchresults(smsearchinput:search.text)));
+         }, icon: Icon(Icons.arrow_forward_ios))
+           , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
+               onPressed: (){
+                 setState(() {
+                   ispressed= !ispressed;
+                 });
+               } ),
+         ],
+       ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
+           onPressed: (){
+             setState(() {
+               ispressed= !ispressed;
+             });
+           })],
+     ),
          body:
          allmeds==null || allmeds.isEmpty? Center(child: CircularProgressIndicator()):
          ListView.builder(

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:pharmacy_1/ssearchresult.dart';
 import 'package:pharmacy_1/suppdrawer.dart';
 import 'package:pharmacy_1/supplyinfo.dart';
 import 'main.dart';
@@ -12,9 +13,11 @@ class provstorage extends StatefulWidget {
   const provstorage({Key? key}) : super(key: key);
 
   @override
-  State<provstorage> createState() => _provstorageState();
-}
 
+  State<provstorage> createState() => _provstorageState();
+
+}
+var search=TextEditingController();
 class _provstorageState extends State<provstorage> {
 
 
@@ -91,16 +94,19 @@ class _provstorageState extends State<provstorage> {
             )
             ],
           ));
+
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;
   Widget cusBar= Text("Storage",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
   Widget cusSearch= TextFormField(
+    controller: search,
     cursorColor: Color.fromRGBO(13,142,171, 1),
     decoration: InputDecoration(
         fillColor: Color.fromRGBO(201, 201, 201, 100),
         filled: true,
         hintText: 'Search...'
     ),);
+
   @override
   void initState(){
     getMeds();
@@ -114,11 +120,29 @@ class _provstorageState extends State<provstorage> {
     double screenwidth= MediaQuery.of(context).size.width;
     return Scaffold(
       drawer: sdrawer(),
-      appBar: AppBar(title:Text("All Medicines",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
+      appBar: AppBar(title: ispressed? cusSearch:cusBar,
         centerTitle: true,
-        actions: [IconButton(icon: Icon(Icons.search),
-          onPressed: (){},
-        )],
+        backgroundColor:  Color.fromRGBO(13,142,171, 1),
+        actions: [ispressed? Row(
+          children: [IconButton(onPressed: (){
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ssersearch(ssearchinput:search.text)));
+          }, icon: Icon(Icons.arrow_forward_ios))
+            , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
+                onPressed: (){
+                  setState(() {
+                    ispressed= !ispressed;
+                  });
+                } ),
+          ],
+        ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
+            onPressed: (){
+              setState(() {
+                ispressed= !ispressed;
+              });
+            })],
       ),
       body:
       Smeds==null || Smeds.isEmpty? Center(child: CircularProgressIndicator()):
