@@ -19,7 +19,7 @@ class _addamedState extends State<addamed> {
     var headers = {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'Authorization': Token
+      'Authorization': 'Bearer $Token'
     };
     var request = http.MultipartRequest('POST', Uri.parse('$url/api/user/asSupplier/medicine/add'));
     request.fields.addAll({
@@ -335,66 +335,68 @@ class _addamedState extends State<addamed> {
 
           ),
         Container(margin: EdgeInsets.symmetric(horizontal: 10),
-            child: DropdownButtonFormField(
-              dropdownColor: Color.fromRGBO(201, 201, 201, 1),
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Color.fromRGBO(201, 201, 201, 100),
-                  enabledBorder:OutlineInputBorder(borderSide: BorderSide(color:Colors.black87,width:1),borderRadius: BorderRadius.circular(5)),
-                  focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:Colors.black,width:1))
-              ),
-              hint:  Row(
-                  children:<Widget> [SizedBox(width:10),Icon(Icons.category,
-                    color:Color.fromRGBO(13,142,171, 1) ,),SizedBox(width: 10,),Text("Category".tr,  style:TextStyle(fontFamily: 'Kalam') )]),
-              isExpanded:true,
-              /*underline: Divider(color: Color.fromRGBO(90, 130, 95, 100),thickness: 2,),*/
-              items: categories.map((e) => DropdownMenuItem(child: Row(
-                children: [SizedBox(width: 10,),Icon(Icons.category,
-                  color: Color.fromRGBO(13,142,171, 1),),SizedBox(width:10),
-                  Text("$e".tr,style:TextStyle(fontFamily: 'Kalam')),
-                ],
-              ), value: e)).toList(), onChanged: (val){
-              setState(() {
-                selectedcategory=val;
-                if(selectedcategory=="Pain Relivers And Fever Reducers"){
-                  category.text='1';
-                }
-                else if(selectedcategory=="Antiacids And Stomach Protection"){
-                  category.text='2';
-                }
-                else if(selectedcategory=="Anti-Allergics And Cold"){
-                  category.text='3';
-                }
-                else if(selectedcategory=="Lipid Reducers"){
-                  category.text='4';
-                }
-                else if(selectedcategory=="Muscle Relaxants"){
-                  category.text='5';
-                }
-                else if(selectedcategory=="Hormonal Drugs"){
-                  category.text='6';
-                }
-                else if(selectedcategory=="Vitamins And Nutritional Supplements"){
-                  category.text='7';
-                }
-                else if(selectedcategory=="Hygiene And Self-Care"){
-                  category.text='8';
-                }
-                else if(selectedcategory=="Antibiotics"){
-                  category.text='9';
-                }
-                else if(selectedcategory=="Antidepressants"){
-                  category.text='10';
-                }
-                else if(selectedcategory=="Creams And Ointments"){
-                  category.text='11';
-                }
-                print("category id is ${category.text}");
+            child: Expanded(
+              child: DropdownButtonFormField(
+                dropdownColor: Color.fromRGBO(201, 201, 201, 1),
+                decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Color.fromRGBO(201, 201, 201, 100),
+                    enabledBorder:OutlineInputBorder(borderSide: BorderSide(color:Colors.black87,width:1),borderRadius: BorderRadius.circular(5)),
+                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color:Colors.black,width:1))
+                ),
+                hint:  Row(
+                    children:<Widget> [SizedBox(width:10),Icon(Icons.category,
+                      color:Color.fromRGBO(13,142,171, 1) ,),SizedBox(width: 10,),Text("Category".tr,  style:TextStyle(fontFamily: 'Kalam') )]),
+                isExpanded:true,
+                /*underline: Divider(color: Color.fromRGBO(90, 130, 95, 100),thickness: 2,),*/
+                items: categories.map((e) => DropdownMenuItem(child: Row(
+                  children: [SizedBox(width: 10,),Icon(Icons.category,
+                    color: Color.fromRGBO(13,142,171, 1),),SizedBox(width:10),
+                    Text("$e".tr,style:TextStyle(fontFamily: 'Kalam')),
+                  ],
+                ), value: e)).toList(), onChanged: (val){
+                setState(() {
+                  selectedcategory=val;
+                  if(selectedcategory=="Pain Relivers And Fever Reducers"){
+                    category.text='1';
+                  }
+                  else if(selectedcategory=="Antiacids And Stomach Protection"){
+                    category.text='2';
+                  }
+                  else if(selectedcategory=="Anti-Allergics And Cold"){
+                    category.text='3';
+                  }
+                  else if(selectedcategory=="Lipid Reducers"){
+                    category.text='4';
+                  }
+                  else if(selectedcategory=="Muscle Relaxants"){
+                    category.text='5';
+                  }
+                  else if(selectedcategory=="Hormonal Drugs"){
+                    category.text='6';
+                  }
+                  else if(selectedcategory=="Vitamins And Nutritional Supplements"){
+                    category.text='7';
+                  }
+                  else if(selectedcategory=="Hygiene And Self-Care"){
+                    category.text='8';
+                  }
+                  else if(selectedcategory=="Antibiotics"){
+                    category.text='9';
+                  }
+                  else if(selectedcategory=="Antidepressants"){
+                    category.text='10';
+                  }
+                  else if(selectedcategory=="Creams And Ointments"){
+                    category.text='11';
+                  }
+                  print("category id is ${category.text}");
 
-              });
-            },
-              value: selectedcategory,
-              validator: (value) => value == null ? 'Please choose the category'.tr : null)),
+                });
+              },
+                value: selectedcategory,
+                validator: (value) => value == null ? 'Please choose the category'.tr : null),
+            )),
             Padding(
             padding: const EdgeInsets.all(10.0),
             child: TextFormField(

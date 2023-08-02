@@ -21,7 +21,7 @@ class _suppinfoState extends State<suppinfo> {
   Future getsupplyinfo() async {
     var response = await http.get(Uri.parse('$url/api/user/asSupplier/supply/show/${widget.suppID}'),
         headers:<String,String>{
-          'Authorization': Token,
+          'Authorization': 'Bearer $Token',
         });
     var responsebody=jsonDecode(response.body);
     setState(() {

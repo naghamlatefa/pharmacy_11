@@ -22,7 +22,7 @@ class _medinfoState extends State<medinfo> {
   Future getmedinfo() async {
     var response = await http.get(Uri.parse('$url/api/user/show_medicines/${widget.MedID}'),
         headers:<String,String>{
-          'Authorization': Token,
+          'Authorization': 'Bearer $Token',
         });
     var responsebody=jsonDecode(response.body);
     setState(() {

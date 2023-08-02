@@ -14,16 +14,8 @@ class categories extends StatefulWidget {
 }
 class _categoriesState extends State<categories> {
 
-  Icon cusIcon = Icon(Icons.search);
-  bool ispressed=false;
-  Widget cusBar= Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
-  Widget cusSearch= TextFormField(
-      cursorColor: Color.fromRGBO(13,142,171, 1),
-      decoration: InputDecoration(
-          fillColor: Color.fromRGBO(201, 201, 201, 100),
-          filled: true,
-          hintText: 'Search...'
-      ),);
+
+
   @override
   void initState() {
     super.initState();
@@ -34,26 +26,15 @@ class _categoriesState extends State<categories> {
     double screenwidth= MediaQuery.of(context).size.width;
     return  Scaffold(
       drawer: drawer(),
-      appBar: AppBar(title: ispressed? cusSearch:cusBar,
+      appBar: AppBar(title:Text("Categories",style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
       centerTitle: true,
       backgroundColor:  Color.fromRGBO(13,142,171, 1),
-     actions: [ispressed? Row(
-       children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
-        , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-             onPressed: (){
-            setState(() {
-              ispressed= !ispressed;
-            });
-         } ),
-       ],
-     ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-    onPressed: (){
-    setState(() {
-    ispressed= !ispressed;
-    });
-    })],
-      ),
-      body:ListView(
+     actions: <Widget>[IconButton(icon: Icon(Icons.search),
+      onPressed: (){},
+    )]),
+
+
+    body:ListView(
         padding: EdgeInsets.all(screenwidth/26),
         children: <Widget> [Container(padding: EdgeInsets.all(screenheight/128.5),height: screenheight/4.3,width: screenwidth/1.09,
           child: Stack(

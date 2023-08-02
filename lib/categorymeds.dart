@@ -27,7 +27,7 @@ List catmeds=[];
   Future getcatMeds() async {
     var response = await http.get(Uri.parse('$url/api/user/show_category_med/${widget.catID}'),
         headers:<String,String>{
-          'Authorization': Token,
+          'Authorization': 'Bearer $Token',
         });
     var responsebody=jsonDecode(response.body);
     setState(() {
@@ -41,16 +41,6 @@ print(responsebody['medicines'][0]['name']);
 
   late String categoryname=widget.categoryname;
 
-  Icon cusIcon = Icon(Icons.search);
-  bool ispressed=false;
-  Widget cusBar= Text('Medicines',style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
-  Widget cusSearch= TextFormField(
-    cursorColor: Color.fromRGBO(13,142,171, 1),
-    decoration: InputDecoration(
-        fillColor: Color.fromRGBO(201, 201, 201, 100),
-        filled: true,
-        hintText: 'Search...'
-    ),);
   @override
   void initState(){
 
@@ -65,24 +55,12 @@ print(responsebody['medicines'][0]['name']);
     double screenwidth= MediaQuery.of(context).size.width;
     return Scaffold(
 
-      appBar: AppBar(title: ispressed? cusSearch:Text('$categoryname',style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
+      appBar: AppBar(title: Text('$categoryname',style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),),
         centerTitle: true,
         backgroundColor:  Color.fromRGBO(13,142,171, 1),
-        actions: [ispressed? Row(
-          children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
-            , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-                onPressed: (){
-                  setState(() {
-                    ispressed= !ispressed;
-                  });
-                } ),
-          ],
-        ):IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
-            onPressed: (){
-              setState(() {
-                ispressed= !ispressed;
-              });
-            })],
+        actions: <Widget>[IconButton(icon: Icon(Icons.search),
+          onPressed: (){},
+        )]
       ),
       body:
       responsebody1==null || responsebody1.isEmpty? Center(child: CircularProgressIndicator()):

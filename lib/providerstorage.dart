@@ -23,7 +23,7 @@ class _provstorageState extends State<provstorage> {
   Future getMeds() async {
     var response = await http.get(Uri.parse('$url/api/user/asSupplier/supply/all'),
         headers:<String,String>{
-        'Authorization': Token,
+        'Authorization': 'Bearer $Token',
         });
     var responsebody=jsonDecode(response.body);
     setState(() {
@@ -43,7 +43,7 @@ class _provstorageState extends State<provstorage> {
         },
 
         headers:<String,String>{
-          'Authorization': Token,
+          'Authorization': 'Bearer $Token',
         }
     );
     if(response4.statusCode==200){
@@ -104,7 +104,7 @@ class _provstorageState extends State<provstorage> {
   @override
   void initState(){
     getMeds();
-    print(Smeds.length);
+    print("length is ${Smeds.length}");
     super.initState();
   }
   Widget build(BuildContext context) {
@@ -176,7 +176,7 @@ deletesupply(Smeds[0][i]['id']);
 }
 Future deletesupply(int suppID) async{
   var response1 = await http.delete(Uri.parse('$url/api/user/asSupplier/supply/delete/$suppID'),headers:<String,String>{
-    'Authorization': Token,
+    'Authorization': 'Bearer $Token',
   });
 
   if (response1.statusCode==200){

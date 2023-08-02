@@ -19,7 +19,7 @@ import 'main.dart';
    Future getallMeds() async {
      var response = await http.get(Uri.parse('$url/api/user/asSupplier/medicine/all'),
          headers:<String,String>{
-           'Authorization': Token,
+           'Authorization': 'Bearer $Token',
          });
      var responsebody=jsonDecode(response.body);
      setState(() {
@@ -38,7 +38,7 @@ import 'main.dart';
          },
 
          headers:<String,String>{
-           'Authorization': Token,
+           'Authorization': 'Bearer $Token',
          }
      );
      if(response3.statusCode==200){

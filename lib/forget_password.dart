@@ -1,8 +1,6 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'main.dart';
+import 'new_password.dart';
 import 'forget_password2.dart';
 class forget_password extends StatefulWidget {
   const forget_password({Key ? key}) : super(key: key);
@@ -12,39 +10,6 @@ class forget_password extends StatefulWidget {
 }
 
 class _forget_passwordState extends State<forget_password> {
-  Future login(String email)async{
-    print("111");
-    print("enaillllll$email");
-    var response=await http.post(
-        Uri.parse('$url/api/user/password/email'),
-        body: <String,String>
-        {
-          'email':email,
-        },
-        headers: {"Accept":"application/json",
-
-        }
-    );
-
-    print("response is ${response.body}");
-    print("response is ${response.statusCode}");
-    if(response.statusCode==200){
-
-      Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(
-          builder: (context) => forget_password2(),
-        ),
-      );
-      var js=jsonDecode(response.body);
-
-    }
-
-    else{
-      print("sorry");
-    }
-  }
-  var emailController=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +24,6 @@ class _forget_passwordState extends State<forget_password> {
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: TextFormField(
-                controller: emailController,
                 cursorColor: Color.fromRGBO(13,142,171, 1),
                 decoration: InputDecoration(
                     focusedBorder: OutlineInputBorder(
@@ -87,11 +51,13 @@ class _forget_passwordState extends State<forget_password> {
                 ),
                 child: MaterialButton(
                   height: 50,
-                  onPressed: (){
-                    print('pressed');
-                    print('befor send request');
-                      login(emailController.text);
-
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => forget_password2(),
+                      ),
+                    );
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -108,6 +74,8 @@ class _forget_passwordState extends State<forget_password> {
                 )),
           ],
         ),
+
+
 
     );
   }
