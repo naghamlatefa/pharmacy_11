@@ -17,7 +17,7 @@ class login extends StatefulWidget {
 class _loginState extends State<login> {
 
   Future login(String email,String pass)async{
-    var response=await http.post(
+    var response = await http.post(
       Uri.parse('$url/api/user/login'),
           body: <String,String>
         {
@@ -27,13 +27,14 @@ class _loginState extends State<login> {
     );
     var responsebody=jsonDecode(response.body);
     print(responsebody['status']);
-    /*Token=js['token'];*/
+    //Token=js['token'];
 
     print("response is ${response.body}");
     print("response is ${response.statusCode}");
     if(response.statusCode==200){
       var js=jsonDecode(response.body);
       Token=js['access_token'];
+      print("$Token");
       issup=responsebody['User is Supplier'];
       if(issup==0){Navigator.pushReplacement(
         context,

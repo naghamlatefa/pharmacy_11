@@ -13,7 +13,11 @@ class Mylocal implements Translations{
       "Categories":"التصنيفات",'Profile':'الصفحة الشخصية','My Cart':'السلة','Reminders':'التذكيرات','About Us':'حولنا','Sign Out':'تسجيل الخروج',
       "Your Cart":"مشترياتك","OK":"تم"," Total  Price:":"السعر الكلي",'Reminders':'التذكيرات','We will Remind you about water and medicine ':'سنذكرك بالماء والأدوية',
       'Water':'الماء','Medicine':'الأدوية','Medicine Reminder':'التذكير بالأدوية','What Times do you take your medicine?':'ما هي الأوقات التي تريد التذكير بالدواء بها',
-      "PICK TIME":"ضع الوقت"
+      "PICK TIME":"ضع الوقت","Water":"نذكرك بالماء","Do not Forget to drink water .... It is for your health":"لا تنسى شرب الماء",
+      'Search...':'البحث ',"Pain Relivers And Fever Reducers":"مسكنات الآلام ومخفضات الحرارة","Antiacids And Stomach Protection":"مضادات الحموضة والمعدة",
+      "Anti-Allergics And Cold":"مضادات الحساسية والبرد","Muscle Relaxants":" مرخيات العضلات","Hormonal Drugs":"الأدوية الهرمونية","Vitamins And Nutritional Supplements":"فيتامينات ومكملات غذائية","Hygiene And Self-Care":"النظافة والعناية الذاتية",
+      "Antibiotics":"مضادات حيوية","Antidepressants":"مضادات الاكتئاب","Creams And Ointments":" الكريمات","Lipid Reducers":"مخفضات الدهون"
+
     },
     "en":{
       " Login" :"Login","English":"English","Arabic":"Arabic","Email":"Email","Email Must Not Be Empty":"Email Must Not Be Empty",
@@ -27,7 +31,10 @@ class Mylocal implements Translations{
       "Categories":"Categories",'Profile':'Profile','My Cart':'My Cart','Reminders':'Reminders','About Us':'About Us','Sign Out':'Sign Out',
       "Your Cart":"Your Cart","OK":"OK"," Total  Price:":" Total  Price:",'Reminders':'Reminders','We will Remind you about water and medicine ':'We will Remind you about water and medicine ',
       'Water':'Water','Medicine':'Medicine','Medicine Reminder':'Medicine Reminder','What Times do you take your medicine?':'What Times do you take your medicine?',
-      "PICK TIME":"PICK TIME"
+      "PICK TIME":"PICK TIME","Water":"Water","Do not Forget to drink water .... It is for your health":"Do not Forget to drink water .... It is for your health",
+      'Search...':'Search...',"Pain Relivers And Fever Reducers":"Pain Relivers And Fever Reducers","Antiacids And Stomach Protection":"Antiacids And Stomach Protection","Anti-Allergics And Cold":"Anti-Allergics And Cold",
+    "Muscle Relaxants":"Muscle Relaxants","Hormonal Drugs":"Hormonal Drugs","Vitamins And Nutritional Supplements":"Vitamins And Nutritional Supplements","Hygiene And Self-Care":"Hygiene And Self-Care",
+      "Antibiotics":"Antibiotics","Antidepressants":"Antidepressants","Creams And Ointments":"Creams And Ointments","Lipid Reducers":"Lipid Reducers"
     }
   };
 

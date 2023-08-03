@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/providerstorage.dart';
 import 'package:pharmacy_1/reminders.dart';
@@ -63,7 +64,7 @@ class _sdrawerState extends State<sdrawer> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) => provstorage(),),);
               });},
                 leading: Icon(Icons.indeterminate_check_box_outlined,color: Colors.black,)
-                ,title: Text('Storage',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+                ,title: Text('Storage'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
               ),
             )
             ,Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent
@@ -72,13 +73,13 @@ class _sdrawerState extends State<sdrawer> {
               Navigator.push(context, MaterialPageRoute(builder: (context) => allmeds(),),);
               });},
                 leading: Icon(Icons.list,color: Colors.black,)
-                ,title: Text('All Medicines',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+                ,title: Text('All Medicines'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
               ),
             ),
             Divider(color: Color.fromRGBO(13,142,171, 1) )
             , ListTile(
               leading: Icon(Icons.public,color: Colors.black,)
-              ,title: Text('About Us',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
+              ,title: Text('About Us'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black),),
             ),
             Container(color: pagenumber==6?Color.fromRGBO(13,142,171, 1):Colors.transparent,
               child: ListTile(
@@ -89,7 +90,7 @@ class _sdrawerState extends State<sdrawer> {
                   logout();
                 },
                 leading: Icon(Icons.exit_to_app_outlined,color: Colors.black,)
-                ,title: Text('Sign Out',style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
+                ,title: Text('Sign Out'.tr  ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color: Colors.black,
 
               ),),
               ),

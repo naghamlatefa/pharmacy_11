@@ -5,12 +5,13 @@ import 'package:pharmacy_1/cart.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/providerstorage.dart';
 import 'categories.dart';
+import 'comments.dart';
 import 'local/local_controller.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'local/local.dart';
 import 'package:provider/provider.dart';
-String Token='Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjBmODE5NGZkYjc5YzZkMGVjYzFjNTZkYTRiODk1NjVmNTI0NDAzM2IzY2FlNmU3NzNiYjA3MTk3MGNjMzM3MjdjNDU4ZmRjZjhkMGRjZjMiLCJpYXQiOjE2OTA3Mjg2ODAuMjY1ODQ5LCJuYmYiOjE2OTA3Mjg2ODAuMjY1ODU0LCJleHAiOjE3MjIzNTEwODAuMjU4ODQ4LCJzdWIiOiIxMDEiLCJzY29wZXMiOlsidXNlciJdfQ.RxY2c9X3qyCEzCwQnZiYWSf6aCiZgcql8t1bRP0_TncqlweWyx395ugxKKc3IDHurnjTodTz7zGJrLiJSH_RhalFeIQ8wwrS81KxoTlH_XsZoEkjcEfi9mgrkM-lTX5ftUc2BqCgWaqBPwi5hgDSuYgg1GWV7m6_TBe2_POZk8JTROYqKeHgaRZHxaZoWeVDavenUcDtzMoqQ6FigYPaqdNCAYHmpS_9fDix_5Wq4R8O27xqU6jDE2W1dB3uRLXnppRF6cyYpuh1jc9Oz61LcLXrtaUS62LL5O8_OxH6li6m_t9KVdWGuPW6fLX8kFwo9wMXLlQOG-2zX-4KbztsvjTJduA5fUqRGfahMXDX5ruW3Qi7D254u4_xYXCZ6vIcYs_Jd_7dDJetF0xGMrcN76c74eGND_gA0ZMs1nA_CfKp-g1Hxmlk3drQuSkwZjKS3eSmN1VbrDpuxEbA8A4kHuyCCgj4AqtVIa2D0kE313cDMVSoo8b7rvuZRxn4KvINwWIzzFzUcWo6Upa-qknV59WT56V8ThH3xwIS2yORql5K5HlF-655gvoc44ZbH0b3CbvOVR2frSzQ4ayI2h2O240dIqUijZb2Usuq2VJNdJHIX2TSRRKd_c-ld8SObr0lZL4y0BBSE6cTHYbP4SvTDtRXLpMTJidh7UpbI62zsuo';
-String url='http://192.168.1.108:8000';
+String Token='';
+String url='http://192.168.43.169:8000';
 int pagenumber=1;
 int issup=2;
 void main() {
@@ -30,14 +31,14 @@ void main() {
     ]
   );
   final cron = Cron();
-  cron.schedule(Schedule.parse('* * * * */2'), () async => {
-    print('every two minute'),
+  cron.schedule(Schedule.parse('* * * * */1'), () async => {
+    print('every one minute'),
     await AwesomeNotifications().createNotification(
         content:NotificationContent(
             id: 1,
             channelKey: 'key1',
-          title: "Water",
-          body: "Do not Forget to drink water .... It is for your health",
+          title: "Water".tr,
+          body: "Do not Forget to drink water .... It is for your health".tr  ,
         )
     )
   });

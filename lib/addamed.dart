@@ -70,7 +70,7 @@ class _addamedState extends State<addamed> {
   var category=TextEditingController();
   List categories=["Pain Relivers And Fever Reducers","Antiacids And Stomach Protection","Anti-Allergics And Cold","Lipid Reducers","Muscle Relaxants","Hormonal Drugs","Vitamins And Nutritional Supplements","Hygiene And Self-Care","Antibiotics","Antidepressants","Creams And Ointments",];
   Future pickergallery() async {
-    final myfile= await ImagePicker().pickImage(source: ImageSource.gallery);
+   final myfile= await ImagePicker().pickImage(source: ImageSource.gallery);
     setState(() {
       _file= File(myfile!.path);
       isimage=true;
