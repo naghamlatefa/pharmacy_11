@@ -10,6 +10,7 @@ class comments extends StatefulWidget {
 }
 
 class _commentsState extends State<comments> {
+  List comments=[];
   Future addcomment(String comment)async{
     print("111");
     print("enaillllll$comment");
@@ -22,7 +23,7 @@ class _commentsState extends State<comments> {
         },
         headers: {
           "Accept":"application/json",
-          'Authorization': 'Bearer $Token'
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWM3NWMzMzRkMzAzZGYxOWMxZDU5ZjVlZWRlMTA3NTgwMzE4NDBiNGM2YzkwZTllNGI3MWJlMzc5ZTY1MDdiNTliMmJiMzFlMDg0NzYzNGYiLCJpYXQiOjE2OTEwNzMwNzAuNDg5ODgxLCJuYmYiOjE2OTEwNzMwNzAuNDg5ODg1LCJleHAiOjE3MjI2OTU0NzAuMzMyMzAzLCJzdWIiOiIxMDQiLCJzY29wZXMiOlsidXNlciJdfQ.NfrAcIkplBSi5aE5UUqsP3vzl1R7fTUS5GGGJffNxNO6PcxUwEdtm8Q2loOrXL8kKGiD-SytlcIDQILJ0jrUqAIXwsDBRQ67rWQThur05dYpUwSSLfqOzNbm4YKjjLxcHaeIJRwkhzkv4S1WO_LywlrL1-AOm0rbCy_JyfHa8nZOEhN31Q2UFT0Ib0TguNoXpY5O3FnG0VDjarW07Kg-wkqTIw0JpOmVwXs6rluGR9yh4-h9IdluKxePgayRV6L_fRgxE9v767-bGmR6S_gLB6aAv56GYN7KrR7m66PiiKVcvyMcyGe0EtZlL_BdfBLK9aE74BuxRd_Kpb2G5T3ellJEwv2b9cS3m7LWbX68m8KgLet6A0SItZJGv6DG1xal0NAklB5fTCx-IkFhT-U8OoKj1jgWx-Jl5KN1bRS0I71p8_RJyxMIQcz80HugYFZdONG3DxyJUPRN-aa7FhZDmz-7WfODIm0t3mAu6a2gyVdpM-FN3V52KQhVlpXJ1zbU-T45b9ahE31Twd8e6_rPa8Cg2gXx-FfsbI6_WEEtIYh5N3WZ2oHH7Z0GvKRV5wBQH24MCo7EfveV3X9lM5X07pSph1tC6R05X01fwuYwOAiVHuqsf7-YSi-bUcdjWdaV9pZDCr_PeoIRhBgNJuo7A1y3IXelHHcyolKV9ujL2QI'
 
         }
     );
@@ -40,18 +41,15 @@ class _commentsState extends State<comments> {
     }
   }
   Future getcomment() async {
-    var response = await http.get(Uri.parse('$url/api/user/medicine/1/question/'),
-        headers:<String,String>{
-          "Accept":"application/json",
-          'Authorization': 'Bearer $Token',
+    var response = await http.get(
+        Uri.parse('$url/api/user/medicine/1/question/'),
+        headers: <String, String>{
+          "Accept": "application/json",
+          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYWM3NWMzMzRkMzAzZGYxOWMxZDU5ZjVlZWRlMTA3NTgwMzE4NDBiNGM2YzkwZTllNGI3MWJlMzc5ZTY1MDdiNTliMmJiMzFlMDg0NzYzNGYiLCJpYXQiOjE2OTEwNzMwNzAuNDg5ODgxLCJuYmYiOjE2OTEwNzMwNzAuNDg5ODg1LCJleHAiOjE3MjI2OTU0NzAuMzMyMzAzLCJzdWIiOiIxMDQiLCJzY29wZXMiOlsidXNlciJdfQ.NfrAcIkplBSi5aE5UUqsP3vzl1R7fTUS5GGGJffNxNO6PcxUwEdtm8Q2loOrXL8kKGiD-SytlcIDQILJ0jrUqAIXwsDBRQ67rWQThur05dYpUwSSLfqOzNbm4YKjjLxcHaeIJRwkhzkv4S1WO_LywlrL1-AOm0rbCy_JyfHa8nZOEhN31Q2UFT0Ib0TguNoXpY5O3FnG0VDjarW07Kg-wkqTIw0JpOmVwXs6rluGR9yh4-h9IdluKxePgayRV6L_fRgxE9v767-bGmR6S_gLB6aAv56GYN7KrR7m66PiiKVcvyMcyGe0EtZlL_BdfBLK9aE74BuxRd_Kpb2G5T3ellJEwv2b9cS3m7LWbX68m8KgLet6A0SItZJGv6DG1xal0NAklB5fTCx-IkFhT-U8OoKj1jgWx-Jl5KN1bRS0I71p8_RJyxMIQcz80HugYFZdONG3DxyJUPRN-aa7FhZDmz-7WfODIm0t3mAu6a2gyVdpM-FN3V52KQhVlpXJ1zbU-T45b9ahE31Twd8e6_rPa8Cg2gXx-FfsbI6_WEEtIYh5N3WZ2oHH7Z0GvKRV5wBQH24MCo7EfveV3X9lM5X07pSph1tC6R05X01fwuYwOAiVHuqsf7-YSi-bUcdjWdaV9pZDCr_PeoIRhBgNJuo7A1y3IXelHHcyolKV9ujL2QI',
         });
-    var responsebody=jsonDecode(response.body);
+    var responsebody = jsonDecode(response.body);
     print(responsebody);
-
-   /* setState(() {
-      print(responsebody['medicines'][0]['name']);
-    });*/
-
+    return responsebody;
   }
   var usercomment=TextEditingController();
   var formkey = GlobalKey<FormState>();
@@ -110,12 +108,14 @@ class _commentsState extends State<comments> {
                               ),
                             )),
 
-
                           ],
                         )
                       ],
                     ),
                   ),
+                ),
+                SizedBox(
+                  height: 30,
                 ),
                 Positioned(top: 30,
                     child: Container(
@@ -130,7 +130,7 @@ class _commentsState extends State<comments> {
                               return Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
-                                  for(int i=0;i<snapshot.data;i++) commentslist(comment: snapshot.data[i]['comment'],)
+                                  for(int i=0;i<snapshot.data.length;i++) commentslist(comment: snapshot.data[i]['comment'],)
 
                                 ],
                               );
