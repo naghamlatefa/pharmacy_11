@@ -41,7 +41,8 @@ class _loginState extends State<login> {
         MaterialPageRoute(
           builder: (context) => categories(),
         ),
-      );}
+      );
+      print("$Token");}
       else if(issup==1){Navigator.pushReplacement(
         context,
         MaterialPageRoute(

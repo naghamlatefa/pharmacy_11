@@ -4,6 +4,7 @@ import 'package:bordered_text/bordered_text.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_1/drawer.dart';
 import 'package:http/http.dart' as http;
+import 'package:pharmacy_1/usersearch.dart';
 import 'categorymeds.dart';
 import 'test.dart';
 import 'main.dart';
@@ -13,12 +14,14 @@ class categories extends StatefulWidget {
   @override
   State<categories> createState() => _categoriesState();
 }
+var search=TextEditingController();
 class _categoriesState extends State<categories> {
 
   Icon cusIcon = Icon(Icons.search);
   bool ispressed=false;
   Widget cusBar= Text("Categories".tr,style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.w700),);
   Widget cusSearch= TextFormField(
+    controller: search,
       cursorColor: Color.fromRGBO(13,142,171, 1),
       decoration: InputDecoration(
           fillColor: Color.fromRGBO(201, 201, 201, 100),
@@ -39,7 +42,12 @@ class _categoriesState extends State<categories> {
       centerTitle: true,
       backgroundColor:  Color.fromRGBO(13,142,171, 1),
      actions: [ispressed? Row(
-       children: [IconButton(onPressed: (){}, icon: Icon(Icons.arrow_forward_ios))
+       children: [IconButton(onPressed: (){
+         Navigator.push(
+             context,
+             MaterialPageRoute(
+                 builder: (context) => usersearch(usearchinput:search.text)));
+       }, icon: Icon(Icons.arrow_forward_ios))
         , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
              onPressed: (){
             setState(() {

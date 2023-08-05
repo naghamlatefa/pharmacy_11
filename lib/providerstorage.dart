@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:pharmacy_1/ssearchresult.dart';
 import 'package:pharmacy_1/suppdrawer.dart';
 import 'package:pharmacy_1/supplyinfo.dart';
+import 'package:provider/provider.dart';
 import 'main.dart';
 
 class provstorage extends StatefulWidget {
@@ -118,6 +120,7 @@ class _provstorageState extends State<provstorage> {
 
     double screenheight= MediaQuery.of(context).size.height;
     double screenwidth= MediaQuery.of(context).size.width;
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       drawer: sdrawer(),
       appBar: AppBar(title: ispressed? cusSearch:cusBar,
@@ -170,7 +173,7 @@ deletesupply(Smeds[0][i]['id']);
                   builder: (context) => suppinfo(suppID: Smeds[0][i]['id'])));},
                 child: Container(color: Color.fromRGBO(35, 33, 30, 0.1),padding: EdgeInsets.all(screenheight/60),width: screenwidth,height: screenheight/5 ,child: ListView(physics: NeverScrollableScrollPhysics(),
                   children: [
-                    Row(mainAxisAlignment: MainAxisAlignment.start,children: [Container(height: screenheight/6,width: screenwidth/4,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/panadol.jpg'))),),SizedBox(width: screenwidth/25,),Container(width: screenwidth/3,child: Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [Text('${Smeds[0][i]['medicine']['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/48,fontFamily: 'Kalam',fontWeight: FontWeight.bold),),Text('Exp date: +${Smeds[0][i]['exp_date']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Dosage: +${Smeds[0][i]['medicine']['strength']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Active Ingredient: +${Smeds[0][i]['medicine']['ActiveIngredient']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam'))],)),Container(width: screenwidth/4,child: Column(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.center,children: [Text('Quantity: +${Smeds[0][i]['quantity']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight: FontWeight.bold)),Text('Price: +${Smeds[0][i]['medicine']['sellingPrice']}',style: TextStyle(color:  Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight:FontWeight.bold )),SizedBox(height: screenheight/138,),RawMaterialButton(onPressed: ()=>openDialogue1(context, Smeds[0][i]['id'])
+                    Row(mainAxisAlignment: MainAxisAlignment.start,children: [Container(height: screenheight/6,width: screenwidth/4,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/panadol.jpg'))),),SizedBox(width: screenwidth/25,),Container(width: screenwidth/3,child: Column(crossAxisAlignment: CrossAxisAlignment.start,mainAxisAlignment: MainAxisAlignment.start,children: [Text('${Smeds[0][i]['medicine']['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/48,fontFamily: 'Kalam',fontWeight: FontWeight.bold),),Text('Exp date: +${Smeds[0][i]['exp_date']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Dosage: +${Smeds[0][i]['medicine']['strength']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam')),Text('Active Ingredient: +${Smeds[0][i]['medicine']['ActiveIngredient']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam'))],)),Container(width: screenwidth/4,child: Column(crossAxisAlignment: CrossAxisAlignment.end,mainAxisAlignment: MainAxisAlignment.center,children: [Text('Quantity: +${Smeds[0][i]['quantity']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight: FontWeight.bold)),Text('Price: +${Smeds[0][i]['medicine']['sellingPrice']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/90,fontFamily: 'Kalam',fontWeight:FontWeight.bold )),SizedBox(height: screenheight/138,),RawMaterialButton(onPressed: ()=>openDialogue1(context, Smeds[0][i]['id'])
 
                     ,elevation: 2,fillColor: Color.fromRGBO(13,142,171, 1),child: Icon(Icons.add,color: Colors.white,size: screenwidth/16,),shape: CircleBorder(),)],))],),
                   SizedBox(height: screenheight/138,),Divider(color: Color.fromRGBO(13,142,171, 1),)],
