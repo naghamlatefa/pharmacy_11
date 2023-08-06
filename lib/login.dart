@@ -51,6 +51,9 @@ class _loginState extends State<login> {
       );}
 
     }
+    else if (response.statusCode==400){
+      openDialogueinvalidlogin(context);
+    }
 
     else{
       print("sorry");
@@ -222,3 +225,11 @@ class _loginState extends State<login> {
     );
   }
 }
+Future openDialogueinvalidlogin(BuildContext context) =>
+    showDialog(context: context, builder: (BuildContext context) =>
+        AlertDialog(title: Text("Invalid Email/Password"),
+          actions: [TextButton(onPressed: (){
+            Navigator.of(context).pop();
+          }, child: Text("ok"))],
+
+        ));

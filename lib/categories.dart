@@ -10,8 +10,10 @@ import 'test.dart';
 import 'main.dart';
 
 class categories extends StatefulWidget {
+
   const categories({Key? key}) : super(key: key);
   @override
+
   State<categories> createState() => _categoriesState();
 }
 var search=TextEditingController();
@@ -26,7 +28,8 @@ class _categoriesState extends State<categories> {
       decoration: InputDecoration(
           fillColor: Color.fromRGBO(201, 201, 201, 100),
           filled: true,
-          hintText: 'Search...'.tr
+          hintText: 'Search...'.tr,
+
       ),);
   @override
   void initState() {
@@ -43,10 +46,13 @@ class _categoriesState extends State<categories> {
       backgroundColor:  Color.fromRGBO(13,142,171, 1),
      actions: [ispressed? Row(
        children: [IconButton(onPressed: (){
-         Navigator.push(
+         if (search.text.isEmpty){
+           openDialoguenosearch(context);
+         }
+         else{Navigator.push(
              context,
              MaterialPageRoute(
-                 builder: (context) => usersearch(usearchinput:search.text)));
+                 builder: (context) => usersearch(usearchinput:search.text)));}
        }, icon: Icon(Icons.arrow_forward_ios))
         , IconButton(icon: ispressed? Icon(Icons.cancel):Icon(Icons.search),
              onPressed: (){
@@ -253,3 +259,11 @@ class _categoriesState extends State<categories> {
     );
   }
 }
+Future openDialoguenosearch(BuildContext context) =>
+    showDialog(context: context, builder: (BuildContext context) =>
+        AlertDialog(title: Text("Please type something"),
+          actions: [TextButton(onPressed: (){
+            Navigator.of(context).pop();
+          }, child: Text("ok"))],
+
+        ));

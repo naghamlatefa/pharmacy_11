@@ -61,7 +61,7 @@ class _medinfoState extends State<medinfo> {
       Container(padding: EdgeInsets.all(screenheight/60),
         child: ListView(
           children: [
-            Container(height: screenwidth/1.5,width: screenwidth/1.5,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/panadol.jpg'))),),
+            Container(height: screenwidth/1.5,width: screenwidth/1.5,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/fakemeds.jpg'))),),
             SizedBox(height:screenheight/138,),
             Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius: BorderRadius.circular(30)),child:Text('  ${MedInfo[0]['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/40,fontFamily: 'Kalam',fontWeight: FontWeight.bold))),
             SizedBox(height:screenheight/138,),

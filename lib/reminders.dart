@@ -11,7 +11,10 @@ class reminders extends StatefulWidget {
 }
 
 class _remindersState extends State<reminders> {
+
+
   @override
+
   Widget build(BuildContext context) {
     double screenheight= MediaQuery.of(context).size.height;
     double screenwidth= MediaQuery.of(context).size.width;
