@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/login.dart';
+import 'package:pharmacy_1/prescriptions.dart';
 import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:pharmacy_1/reminders.dart';
 import 'package:pharmacy_1/categories.dart';
@@ -86,15 +87,24 @@ final themeState = Provider.of<DarkThemeProvider>(context);
                 leading: Icon(Icons.access_time_outlined,color:themeState.getDarkTheme?Colors.white :Colors.black,)
                 ,title: Text('Reminders'.tr ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color:themeState.getDarkTheme?Colors.white :Colors.black),),
               ),
-            ),Divider(color: Color.fromRGBO(13,142,171, 1) )
-    , ListTile(
+            ),
+      Container(color: pagenumber==4?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+        child: ListTile(onTap: (){setState(() {
+          pagenumber=4;
+          Navigator.push(context, MaterialPageRoute(builder: (context) => prescs(),),);
+        });},
+          leading: Icon(Icons.list_alt,color:themeState.getDarkTheme?Colors.white :Colors.black,)
+          ,title: Text('Prescriptions'.tr ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color:themeState.getDarkTheme?Colors.white :Colors.black),),
+        ),),
+            Divider(color: Color.fromRGBO(13,142,171, 1) )
+          , ListTile(
               leading: Icon(Icons.public,color:themeState.getDarkTheme?Colors.white :Colors.black,)
               ,title: Text('About Us'.tr,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color:themeState.getDarkTheme?Colors.white :Colors.black),),
             ),
-            Container(color: pagenumber==5?Color.fromRGBO(13,142,171, 1):Colors.transparent,
+            Container(color: pagenumber==6?Color.fromRGBO(13,142,171, 1):Colors.transparent,
               child: ListTile(
                 onTap: (){
-                  pagenumber=5;
+                  pagenumber=6;
                   print('pressed');
                   print('befor send request');
                     logout();
