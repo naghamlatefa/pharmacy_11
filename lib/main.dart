@@ -5,9 +5,11 @@ import 'package:pharmacy_1/cart.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:pharmacy_1/providerstorage.dart';
+import 'package:pharmacy_1/reminderentrybloc/reminderbloc.dart';
 import 'categories.dart';
 import 'comments.dart';
 import 'consts/theme_data.dart';
+import 'global_bloc.dart';
 import 'local/local_controller.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'local/local.dart';
@@ -59,9 +61,11 @@ class _MyAppState extends State<MyApp> {
 void getCurrentAppTheme() async {
 themeChangeProvider.setDarkTheme = await themeChangeProvider.darkThemePrefs.getTheme();
   }
+  GlobalBloc? globalBloc;
   @override
   void initState() {
     getCurrentAppTheme();
+    globalBloc=GlobalBloc();
     super.initState();
   }
 
@@ -72,7 +76,10 @@ themeChangeProvider.setDarkTheme = await themeChangeProvider.darkThemePrefs.getT
       return cart();
     },
     child: MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_){
+      providers: [Provider<GlobalBloc>.value(
+        value: globalBloc!,
+
+      ),ChangeNotifierProvider(create: (_){
         return themeChangeProvider;
       })],
       child: Consumer<DarkThemeProvider>(builder: (context, themeProvider, child) {

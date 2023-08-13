@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:pharmacy_1/cart_shopping.dart';
+//import 'package:pharmacy_1/cart_shopping.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/prescriptions.dart';
 import 'package:pharmacy_1/provider/dark_theme_provider.dart';
@@ -74,7 +74,7 @@ final themeState = Provider.of<DarkThemeProvider>(context);
     ),
             ), Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent,
               child: ListTile(onTap: (){setState(() {pagenumber=2;
-                Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
+               // Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
               });},
                 leading: Icon(Icons.shopping_cart,color:themeState.getDarkTheme?Colors.white :Colors.black,)
                 ,title: Text('My Cart'.tr ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color:themeState.getDarkTheme?Colors.white :Colors.black),),
