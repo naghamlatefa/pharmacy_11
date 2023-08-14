@@ -1,16 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import 'cart.dart';
 import 'package:http/http.dart' as http;
 import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'comments.dart';
 import 'main.dart';
+
 class medinfo extends StatefulWidget {
 
-  const medinfo({Key? key,required this.MedID}) : super(key: key);
+  const medinfo({Key? key,required this.MedID, }) : super(key: key);
   final int MedID;
+
 
 
   @override
@@ -63,7 +65,8 @@ class _medinfoState extends State<medinfo> {
           children: [
             Container(height: screenwidth/1.5,width: screenwidth/1.5,decoration: BoxDecoration(borderRadius: BorderRadius.circular(30),image: DecorationImage(fit: BoxFit.fill,image: AssetImage('assets/fakemeds.jpg'))),),
             SizedBox(height:screenheight/138,),
-            Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius: BorderRadius.circular(30)),child:Text('  ${MedInfo[0]['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/40,fontFamily: 'Kalam',fontWeight: FontWeight.bold))),
+            Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius:
+            BorderRadius.circular(30)),child:Text('  ${MedInfo[0]['name']}',style: TextStyle(color:  Color.fromRGBO(13,142,171, 1),fontSize: screenheight/40,fontFamily: 'Kalam',fontWeight: FontWeight.bold))),
             SizedBox(height:screenheight/138,),
             Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius: BorderRadius.circular(30)),child:Text('  Active Ingredient: ${MedInfo[0]['ActiveIngredient']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/55,fontFamily: 'Kalam'))),
             SizedBox(height:screenheight/138,),
@@ -75,7 +78,11 @@ class _medinfoState extends State<medinfo> {
             SizedBox(height:screenheight/138,),
             Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius: BorderRadius.circular(30)),child:Text('  Details: ${MedInfo[0]['about']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/55,fontFamily: 'Kalam'))),
             SizedBox(height:screenheight/138,),
-            RawMaterialButton(onPressed: (){},shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Row(
+            RawMaterialButton(onPressed: (){
+              final cartInstance = Provider.of<Cart>(context, listen: false);
+              cartInstance.addToCart(MedInfo[0]['name'], double.parse(MedInfo[0]['sellingPrice']));
+
+            },shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Row(
               mainAxisAlignment: MainAxisAlignment.center,children: [ Icon(Icons.shopping_cart,
                 color: Colors.white,),
                 Text(" Add To Cart",style:TextStyle(fontFamily: 'kalam',color: Colors.white,fontSize: 19,fontWeight: FontWeight.w400),),

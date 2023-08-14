@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_1/cart.dart';
 import 'package:provider/provider.dart';
-import 'medicine.dart';
-import 'cart.dart';
+
 class cart_shopping extends StatefulWidget {
   const cart_shopping({Key? key}) : super(key: key);
   @override
@@ -20,10 +19,10 @@ class _chechoutState extends State<cart_shopping> {
               fontFamily:'Kalam'
           ),),
         ),
-        body: Consumer<cart>(
-          builder: (context,cart,child){
+        body: Consumer<Cart>(
+          builder: (context,Cart,child){
             return ListView.builder(
-              itemCount: cart.basketitem.length,
+              itemCount: Cart.basketitem.length,
               itemBuilder: (context,i){
                 return Container(
                   margin: EdgeInsets.symmetric(horizontal: 22, vertical: 10),
@@ -46,12 +45,12 @@ class _chechoutState extends State<cart_shopping> {
                         spreadRadius: -6.0,
                       ),
                     ],
-                    image: DecorationImage(
+                   image: DecorationImage(
                       colorFilter: ColorFilter.mode(
                         Colors.black.withOpacity(0.35),
                         BlendMode.multiply,
                       ),
-                      image: AssetImage("assets/"  + "${cart.basketitem[i].image}"),
+                      image: AssetImage("'assets/login.jpg'"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -60,18 +59,18 @@ class _chechoutState extends State<cart_shopping> {
                         Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text("${cart.basketitem[i].name}",
+                              Text(Cart.basketitem[i].name,
                                   style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
                               SizedBox(height: 30),
-                              Text("price : " + "${cart.basketitem[i].price}",
+                              Text("price : " + "${Cart.basketitem[i].price}",
                                   style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
-                              IconButton(
+                             /* IconButton(
                                 icon: Icon(Icons.delete_forever,
                                 color: Colors.white,),
                                 onPressed: (){
                                   cart.remove(cart.basketitem[i]);
                                 },
-                              ),
+                              ),*/
                             ]
                         ),
 
@@ -91,7 +90,7 @@ class _chechoutState extends State<cart_shopping> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Consumer<cart>(builder: (context,cart,child){
+            Consumer<Cart>(builder: (context,cart,child){
               return  Expanded(
                 child: Text(" Total  Price:".tr+"${cart.totalprice}",
                 style: TextStyle(

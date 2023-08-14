@@ -15,7 +15,7 @@ import 'package:awesome_notifications/awesome_notifications.dart';
 import 'local/local.dart';
 import 'package:provider/provider.dart';
 String Token='';
-String url='http://192.168.1.108:8000';
+String url='http://192.168.43.169:8000';
 int pagenumber=1;
 int issup=2;
 void main() {
@@ -73,7 +73,7 @@ themeChangeProvider.setDarkTheme = await themeChangeProvider.darkThemePrefs.getT
 
     Get.put(mylocalcontroller());
     return ChangeNotifierProvider(create: (context){
-      return cart();
+      return Cart();
     },
     child: MultiProvider(
       providers: [Provider<GlobalBloc>.value(
