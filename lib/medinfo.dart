@@ -45,7 +45,7 @@ class _medinfoState extends State<medinfo> {
 
     super.initState();
   }
-
+  TextEditingController amount=TextEditingController();
   Widget build(BuildContext context) {
 
     double screenheight= MediaQuery.of(context).size.height;
@@ -79,8 +79,9 @@ class _medinfoState extends State<medinfo> {
             Container(decoration: BoxDecoration(color: Color.fromRGBO(35, 33, 30, 0.1),borderRadius: BorderRadius.circular(30)),child:Text('  Details: ${MedInfo[0]['about']}',style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontSize: screenheight/55,fontFamily: 'Kalam'))),
             SizedBox(height:screenheight/138,),
             RawMaterialButton(onPressed: (){
-              final cartInstance = Provider.of<Cart>(context, listen: false);
-              cartInstance.addToCart(MedInfo[0]['name'], double.parse(MedInfo[0]['sellingPrice']));
+              /*final cartInstance = Provider.of<Cart>(context, listen: false);
+              cartInstance.addToCart(MedInfo[0]['id'],MedInfo[0]['name'], double.parse(MedInfo[0]['sellingPrice']));*/
+              openDialogue2(context);
 
             },shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Row(
               mainAxisAlignment: MainAxisAlignment.center,children: [ Icon(Icons.shopping_cart,
@@ -108,5 +109,30 @@ class _medinfoState extends State<medinfo> {
 
     );
 
+
   }
+  Future openDialogue2(BuildContext context) =>
+      showDialog(context: context, builder: (BuildContext context) =>
+          AlertDialog(title: TextFormField(
+            controller: amount ,
+            keyboardType: TextInputType.phone,
+            cursorColor: Color.fromRGBO(13,142,171, 1),
+            decoration: InputDecoration(
+                fillColor: Color.fromRGBO(201, 201, 201, 100),
+                filled: true,
+                hintText: 'amount'.tr,
+                hintStyle: TextStyle(fontFamily: 'Kalam')
+            ),
+          ),
+            actions: [TextButton(onPressed: (){
+              final cartInstance = Provider.of<Cart>(context, listen: false);
+              cartInstance.addToCart(MedInfo[0]['id'].toString(),
+                  MedInfo[0]['name'],
+                  double.parse(MedInfo[0]['sellingPrice']),
+                  double.parse(amount.text));
+              Navigator.of(context).pop();
+            }, child: Text("ok"))],
+          )
+      );
 }
+

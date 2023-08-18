@@ -1,7 +1,12 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pharmacy_1/cart.dart';
 import 'package:provider/provider.dart';
+import 'package:http/http.dart' as http;
+import 'main.dart';
+import 'cart.dart';
+import 'medinfo.dart';
 
 class cart_shopping extends StatefulWidget {
   const cart_shopping({Key? key}) : super(key: key);
@@ -9,6 +14,41 @@ class cart_shopping extends StatefulWidget {
   State<cart_shopping> createState() => _chechoutState();
 }
 class _chechoutState extends State<cart_shopping> {
+  Future cart(String id,String amount)async{
+    var response = await http.post(
+        Uri.parse('$url/api/user/medicine/buy'),
+        body: <String,String>
+        {
+          'medicine_ids[0]':id,
+          'quantity[0]': amount.toString()
+        },
+        headers: {"Accept":"application/json",
+          'Accept': 'application/json',
+          'Authorization': 'Bearer $Token'
+
+        }
+    );
+    var responsebody=jsonDecode(response.body);
+    print(responsebody['status']);
+    //Token=js['token'];
+
+    print("response is ${response.body}");
+    print("response is ${response.statusCode}");
+    if(response.statusCode==200){
+      print("response is ${response.body}");
+      openDialogue2(context);
+      final cartInstance = Provider.of<Cart>(context, listen: false);
+      for (var item in cartInstance.basketitem) {
+        cartInstance.remove(item);
+      }
+
+    }
+
+    else{
+      print("sorry");
+    }
+  }
+  var amount=TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +90,7 @@ class _chechoutState extends State<cart_shopping> {
                         Colors.black.withOpacity(0.35),
                         BlendMode.multiply,
                       ),
-                      image: AssetImage("'assets/login.jpg'"),
+                      image: AssetImage("assets/login.jpg"),
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -62,15 +102,20 @@ class _chechoutState extends State<cart_shopping> {
                               Text(Cart.basketitem[i].name,
                                   style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
                               SizedBox(height: 30),
-                              Text("price : " + "${Cart.basketitem[i].price}",
+                              Text("  price : " + "${Cart.basketitem[i].price}",
                                   style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
-                             /* IconButton(
+                              SizedBox(height: 30),
+                              Text("  Amount : " + "${Cart.basketitem[i].amount}",
+                                  style: TextStyle(fontFamily:'Kalam',fontWeight: FontWeight.bold,color: Colors.white,)),
+                             IconButton(
                                 icon: Icon(Icons.delete_forever,
                                 color: Colors.white,),
                                 onPressed: (){
-                                  cart.remove(cart.basketitem[i]);
+                                  Cart.remove(Cart.basketitem[i]);
                                 },
-                              ),*/
+                              ),
+
+
                             ]
                         ),
 
@@ -117,6 +162,12 @@ class _chechoutState extends State<cart_shopping> {
                         fontFamily:'Kalam'
                     ),),
                   onPressed: () {
+                    print('preeeeeeeeeeesd');
+
+                      final cartInstance = Provider.of<Cart>(context, listen: false);
+                      for (var item in cartInstance.basketitem) {
+                        cart(item.id, item.amount.toString());
+                      }
 
                   },
                 ),
@@ -128,4 +179,16 @@ class _chechoutState extends State<cart_shopping> {
 
           );
   }
+  Future openDialogue2(BuildContext context) =>
+      showDialog(context: context, builder: (BuildContext context) =>
+          AlertDialog(title: Text(
+            'We took Your order wait to receive it',
+            style: TextStyle(
+              color:Color.fromRGBO(13,142,171, 1) ,
+                fontFamily:'Kalam'
+            ),
+          )
+
+          )
+      );
 }

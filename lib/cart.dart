@@ -1,18 +1,20 @@
 import 'package:flutter/cupertino.dart';
 
 class Medicine {
+  final String id;
   final String name;
   final double price;
+  final double amount;
 
-  Medicine({required this.name, required this.price});
+  Medicine({required this.id,required this.name, required this.price,required this.amount});
 }
 
 class Cart with ChangeNotifier {
   List<Medicine> items = [];
   double price = 0.0;
 
-  void addToCart(String name, double price) {
-    var item = Medicine(name: name, price: price);
+  void addToCart(String id,String name, double price,double amount) {
+    var item = Medicine(id : id,name: name, price: price,amount:amount);
 
     items.add(item);
     this.price += item.price;
