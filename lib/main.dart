@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cron/cron.dart';
+import 'package:pharmacy_1/addareminder.dart';
 import 'package:pharmacy_1/cart.dart';
 import 'package:pharmacy_1/login.dart';
 import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:pharmacy_1/providerstorage.dart';
 import 'package:pharmacy_1/reminderentrybloc/reminderbloc.dart';
+import 'package:pharmacy_1/services/notificationservice.dart';
 import 'categories.dart';
 import 'comments.dart';
 import 'consts/theme_data.dart';
@@ -14,12 +16,16 @@ import 'local/local_controller.dart';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'local/local.dart';
 import 'package:provider/provider.dart';
+import 'package:pharmacy_1/addareminder.dart';
 String Token='';
-String url='http://192.168.43.169:8000';
+String url='http://192.168.1.109:8000';
 int pagenumber=1;
 int issup=2;
+bool water=false;
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  NotificationService().initNotification();
+
   AwesomeNotifications().initialize(
       null,
     [
@@ -36,15 +42,17 @@ void main() {
   );
   final cron = Cron();
   cron.schedule(Schedule.parse('* * * * */1'), () async => {
-    print('every one minute'),
-    await AwesomeNotifications().createNotification(
+
+    if(water==true){print('every one minute'),await AwesomeNotifications().createNotification(
+
         content:NotificationContent(
             id: 1,
             channelKey: 'key1',
           title: "Water".tr,
           body: "Do not Forget to drink water .... It is for your health".tr  ,
         )
-    )
+    )}
+    else {print("reminder is off")}
   });
 
   runApp(MyApp());

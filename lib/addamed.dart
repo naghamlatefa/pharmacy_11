@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:pharmacy_1/allmeds.dart';
 import 'main.dart';
 class addamed extends StatefulWidget {
   const addamed({Key? key}) : super(key: key);
@@ -433,6 +434,9 @@ class _addamedState extends State<addamed> {
                   onPressed: () {
                     if(formkey.currentState!.validate()){
                       addmed(name.text,barcode.text,wholesale.text,sellingPrice.text,dosageForm.text,strength.text,activeingredient.text,about.text,manufactureid.text,quantity.text,category.text,exp_date.text,_file!);
+                      setState(() {
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=> allmeds()));
+                      });
                     }
                   },
                   child: Row(

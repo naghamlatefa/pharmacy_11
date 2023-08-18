@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:pharmacy_1/drawer.dart';
 import 'package:pharmacy_1/global_bloc.dart';
 import 'package:pharmacy_1/medreminder.dart';
+import 'package:pharmacy_1/reminderspage.dart';
 import 'package:provider/provider.dart';
 
 import 'Model/medicine.dart';
@@ -31,7 +32,7 @@ class _reminderinfoState extends State<reminderinfo> {
               TextButton(
                   onPressed: () {
                     _globalBloc.removeMedicine(widget.medicine);
-                    Navigator.of(context).pop();
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> reminderspage()));
                   },
                   child: Text("Yes"))
             ],
@@ -95,28 +96,7 @@ class _reminderinfoState extends State<reminderinfo> {
                 ),
               ],
             ),
-            SizedBox(height: 10,),
-            Row(
-              children: [
-                Text("Repeating time is every ",style: TextStyle(
-                    color: Color.fromRGBO(13, 142, 171, 1),
-                    fontSize: screenheight / 48,
-                    fontFamily: 'Kalam',
-                    fontWeight: FontWeight.bold)),
-                Container(padding: EdgeInsets.all(8.0),decoration: BoxDecoration(color:Color.fromRGBO(13, 142, 171, 1),borderRadius: BorderRadius.circular(30) ),
-                  child: Text(widget.medicine.hour!.toString() ,style: TextStyle(
-                    color: Colors.white,
-                    fontSize: screenheight / 48,
-                    fontFamily: 'Kalam',
-                  )),
-                ),
-                Text(" hours",style: TextStyle(
-                    color: Color.fromRGBO(13, 142, 171, 1),
-                    fontSize: screenheight / 48,
-                    fontFamily: 'Kalam',
-                    fontWeight: FontWeight.bold)),
-              ],
-            ),
+
             SizedBox(height: 20,),
             Container(decoration: BoxDecoration(color: Colors.redAccent,borderRadius: BorderRadius.circular(30)),
               child: MaterialButton(

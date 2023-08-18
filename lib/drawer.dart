@@ -10,6 +10,7 @@ import 'package:pharmacy_1/categories.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
+import 'cart_shopping.dart';
 import 'main.dart';
 
 class drawer extends StatefulWidget {
@@ -74,7 +75,7 @@ final themeState = Provider.of<DarkThemeProvider>(context);
     ),
             ), Container(color: pagenumber==2?Color.fromRGBO(13,142,171, 1):Colors.transparent,
               child: ListTile(onTap: (){setState(() {pagenumber=2;
-               // Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
+                Navigator.push(context, MaterialPageRoute(builder: (context) => cart_shopping(),),);
               });},
                 leading: Icon(Icons.shopping_cart,color:themeState.getDarkTheme?Colors.white :Colors.black,)
                 ,title: Text('My Cart'.tr ,style: TextStyle(fontWeight: FontWeight.w700,fontFamily:'Kalam',color:themeState.getDarkTheme?Colors.white :Colors.black),),

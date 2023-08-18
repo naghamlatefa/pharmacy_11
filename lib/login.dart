@@ -2,8 +2,10 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:pharmacy_1/provider/dark_theme_provider.dart';
 import 'package:pharmacy_1/providerstorage.dart';
 import 'package:pharmacy_1/register.dart';
+import 'package:provider/provider.dart';
 import 'forget_password.dart';
 import 'local/local_controller.dart';
 import 'categories.dart';
@@ -65,6 +67,7 @@ class _loginState extends State<login> {
   @override
   Widget build(BuildContext context) {
     mylocalcontroller controllerlang=Get.find();
+    final themeState = Provider.of<DarkThemeProvider>(context);
     return Scaffold(
       body: Form(
               key: formkey,
@@ -183,7 +186,7 @@ class _loginState extends State<login> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('Don\'t Have An Acount ?'.tr,style: TextStyle(fontFamily:'Kalam'),),
+                      Text("Don't Have An Acount ?".tr,style: TextStyle(color:themeState.getDarkTheme?Colors.white :Colors.black,fontFamily:'Kalam'),),
                       TextButton(onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context)=> register()));
                       }, child:
