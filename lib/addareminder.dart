@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'package:cron/cron.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -9,9 +10,15 @@ import 'package:http/http.dart' as http;
 import 'package:pharmacy_1/common/convert_time.dart';
 import 'package:pharmacy_1/global_bloc.dart';
 import 'package:pharmacy_1/reminderentrybloc/reminderbloc.dart';
+import 'package:pharmacy_1/reminderspage.dart';
+import 'package:pharmacy_1/services/notificationservice.dart';
 import 'package:provider/provider.dart';
 import 'Model/medicine.dart';
 import 'main.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest.dart' as tz;
+
+
 
 class addareminder extends StatefulWidget {
   const addareminder({Key? key}) : super(key: key);
@@ -21,7 +28,7 @@ class addareminder extends StatefulWidget {
 }
 
 class _addareminderState extends State<addareminder> {
-
+  late FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
   var name = TextEditingController();
   late var formkey = GlobalKey<FormState>();
 
@@ -29,8 +36,6 @@ class _addareminderState extends State<addareminder> {
   var hour = TextEditingController();
   List hours = ["4", "6", "8", "12", "24"];
   late NewEntryBloc _newEntryBloc;
-
-
 
   void dispose() {
     super.dispose();
@@ -40,12 +45,17 @@ class _addareminderState extends State<addareminder> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+
+    flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
     var name = TextEditingController();
     var formkey = GlobalKey<FormState>();
     _newEntryBloc = NewEntryBloc();
+    //initializeNotifictations();
     var _selected;
+    WidgetsFlutterBinding.ensureInitialized();
+    NotificationService().initNotification();
+
   }
 
   @override
@@ -57,6 +67,7 @@ class _addareminderState extends State<addareminder> {
 
     return Scaffold(
       appBar: AppBar(
+        actions: [IconButton(onPressed:(){NotificationService().showNotification(title: 'hey',body: 'hey');} , icon: Icon(Icons.add))],
         backgroundColor: Color.fromRGBO(13, 142, 171, 1),
         title: Text(
           'New Reminder',
@@ -97,15 +108,9 @@ class _addareminderState extends State<addareminder> {
                       },
                     ),
                   ),
+
                   selecthour(),
-
-
-
-                  SizedBox(
-                    height: screenheight / 138,
-                  ),
                   selecttime(),
-
                   SizedBox(
                     height: screenheight / 60,
                   ),
@@ -118,26 +123,39 @@ class _addareminderState extends State<addareminder> {
                       child: MaterialButton(
                         height: 50,
                         onPressed: () {
-                          String? medicineName;
+                          if (name.text == "" ||
+                              _newEntryBloc.selectedTimeOfDay$!.value ==
+                                  "Instance of 'Future<TimeOfDay?>'" ) {
+                            openDialogueempty(context);
+                          } else {
 
+                            String? medicineName;
 
-                          medicineName = name.text;
+                            medicineName = name.text;
 
-                          int hour = _newEntryBloc.selecthour!.value;
-                          String startTime =
-                              _newEntryBloc.selectedTimeOfDay$!.value;
-                          List<int> intIDs =
-                              makeIDs(24 / _newEntryBloc.selecthour!.value);
-                          List<String> notificationIDs =
-                              intIDs.map((i) => i.toString()).toList();
+                            int hour = _newEntryBloc.selecthour!.value;
+                            String startTime =
+                                _newEntryBloc.selectedTimeOfDay$!.value;
+                            List<int> intIDs =
+                                makeIDs(24 / _newEntryBloc.selecthour!.value);
+                            List<String> notificationIDs =
+                                intIDs.map((i) => i.toString()).toList();
 
-                          Medicine newEntryMedicine = Medicine(
-                              notificationIDs: notificationIDs,
-                              medicineName: medicineName,
-                              hour: hour,
-                              startTime: startTime);
+                            Medicine newEntryMedicine = Medicine(
+                                notificationIDs: notificationIDs,
+                                medicineName: medicineName,
+                                hour: hour,
+                                startTime: startTime);
 
-                          globalBloc.updateMedicineList(newEntryMedicine);
+                            setState(() {
+                              globalBloc.updateMedicineList(newEntryMedicine);
+                              scheduleNotification(newEntryMedicine);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => reminderspage()));
+                            });
+                          }
                         },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -172,6 +190,55 @@ class _addareminderState extends State<addareminder> {
     }
     return ids;
   }
+
+  /*Future <void >initializeNotifictations() async {
+    var initilizationSettingsAndroid = const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettings =
+        InitializationSettings(android: initilizationSettingsAndroid);
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  }*/
+
+  Future onSelectNotification(String? payload) async {
+    if (payload != null) {
+      debugPrint('notification payload: $payload');
+    }
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const reminderspage()));
+  }
+
+  Future<void> scheduleNotification(Medicine medicine) async {
+    var hour = int.parse(medicine.startTime![0] + medicine.startTime![1]);
+    var ogValue = hour;
+    var minute = int.parse(medicine.startTime![2] + medicine.startTime![3]);
+    var cron=new Cron();
+    var androidPlatformChannelSpecifics =  await AndroidNotificationDetails(
+        'repeatDailyAtTime channel id', 'repeatDailyAtTime channel name',
+        importance: Importance.max,
+        priority: Priority.max,
+        ledColor: Colors.blue,
+        ledOffMs: 1000,
+        ledOnMs: 1000,
+        enableLights: true);
+
+
+
+    var platformChannelSpecifics = NotificationDetails(
+        android: androidPlatformChannelSpecifics,
+      );
+
+    for (int i = 0; i < (24 / medicine.hour!).floor(); i++) {
+
+     cron.schedule(new Schedule.parse('$minute $hour * * *'),() async{
+       await flutterLocalNotificationsPlugin.show(
+           int.parse(medicine.notificationIDs![i]),
+           'Reminder: ${medicine.medicineName}',
+           'It is time to take your medicine ${medicine.medicineName}',
+           //Time(hour,minute, 3),
+           platformChannelSpecifics);
+       hour = ogValue;
+     });
+    }
+  }
 }
 
 class selecthour extends StatefulWidget {
@@ -184,13 +251,15 @@ class selecthour extends StatefulWidget {
 class _selecthourState extends State<selecthour> {
   @override
   var _selected = 0;
+
   Widget build(BuildContext context) {
     final _hours = [4, 6, 8, 12, 24];
 
     double screenheight = MediaQuery.of(context).size.height;
     double screenwidth = MediaQuery.of(context).size.width;
     final NewEntryBloc newEntryBloc = Provider.of<NewEntryBloc>(context);
-    return Container(
+    newEntryBloc.updatehour(24);
+    return SizedBox( height: screenheight / 138,)/*Container(
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: Expanded(
         child: Row(
@@ -208,11 +277,11 @@ class _selecthourState extends State<selecthour> {
               height: screenheight / 8,
               width: screenwidth / 4,
               child: Center(
-                child: DropdownButton(
+                /*child: DropdownButton(
                   isExpanded: true,
                   iconEnabledColor: Color.fromRGBO(13, 142, 171, 1),
                   dropdownColor: Colors.white,
-                  hint:  _selected == 0
+                  hint: _selected == 0
                       ? Text('select repeating time',
                           style: TextStyle(
                               color: Color.fromRGBO(13, 142, 171, 1),
@@ -238,7 +307,7 @@ class _selecthourState extends State<selecthour> {
                       newEntryBloc.updatehour(newVal!);
                     });
                   },
-                ),
+                ),*/
               ),
             ),
             Text("hours",
@@ -250,9 +319,10 @@ class _selecthourState extends State<selecthour> {
           ],
         ),
       ),
-    );
+    )*/;
   }
 }
+
 class selecttime extends StatefulWidget {
   const selecttime({Key? key}) : super(key: key);
 
@@ -261,24 +331,23 @@ class selecttime extends StatefulWidget {
 }
 
 class _selecttimeState extends State<selecttime> {
-
   @override
   Widget build(BuildContext context) {
     final NewEntryBloc newEntryBloc = Provider.of<NewEntryBloc>(context);
     TimeOfDay? _time = const TimeOfDay(hour: 0, minute: 00);
     Future<TimeOfDay?> _selectTime() async {
       final TimeOfDay? picked =
-      await showTimePicker(context: context, initialTime: _time!);
+          await showTimePicker(context: context, initialTime: _time!);
       if (picked != null && picked != _time) {
         setState(() {
           _time = picked;
           newEntryBloc.updateTime(convertTime(_time!.hour.toString()) +
               convertTime(_time!.minute.toString()));
-
         });
       }
       return picked!;
     }
+
     return Container(
         margin: EdgeInsets.symmetric(horizontal: 60),
         decoration: BoxDecoration(
@@ -290,7 +359,6 @@ class _selecttimeState extends State<selecttime> {
           onPressed: () {
             //_selectTime();
             newEntryBloc.updateTime(_selectTime().toString());
-            print('time is ${_selectTime()}');
           },
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -312,3 +380,16 @@ class _selecttimeState extends State<selecttime> {
         ));
   }
 }
+
+Future openDialogueempty(BuildContext context) => showDialog(
+    context: context,
+    builder: (BuildContext context) => AlertDialog(
+          title: Text("Please fill all fields"),
+          actions: [
+            TextButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text("ok"))
+          ],
+        ));

@@ -4,6 +4,8 @@ import 'package:pharmacy_1/drawer.dart';
 import 'package:pharmacy_1/medreminder.dart';
 import 'package:pharmacy_1/reminderspage.dart';
 
+import 'main.dart';
+
 class reminders extends StatefulWidget {
   const reminders({Key? key}) : super(key: key);
 
@@ -33,7 +35,11 @@ class _remindersState extends State<reminders> {
           children: [
             Column(
               children: [
-                GestureDetector(onTap: (){},child: Container(height: screenwidth/2.35,width: screenwidth/2.35,decoration: BoxDecoration(image:DecorationImage(fit:BoxFit.fill,image: AssetImage('assets/water.jpg')) ,borderRadius: BorderRadius.circular(360),color:Color.fromRGBO(13,142,171, 1) ),)),
+                GestureDetector(onTap: (){if(water==true){setState(() {
+                  water=false;
+                });}else if(water==false){setState(() {
+                  water=true;
+                });}},child:Stack (children :[Container(decoration: BoxDecoration(borderRadius: BorderRadius.circular(360),color: water==true?Colors.green:Colors.transparent),height: screenwidth/2.299,width: screenwidth/2.299),Container(margin: EdgeInsets.all(3.8),height: screenwidth/2.35,width: screenwidth/2.35,decoration: BoxDecoration(image:DecorationImage(fit:BoxFit.fill,image: AssetImage('assets/water.jpg')) ,borderRadius: BorderRadius.circular(360),color:Color.fromRGBO(13,142,171, 1) ),)]),),
              Text('Water'.tr,style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Color.fromRGBO(13,142,171, 1),fontSize: screenwidth/26.6),) ],
             ),
           ],

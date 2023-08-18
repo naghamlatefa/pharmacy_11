@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:http/http.dart' as http;
 import 'main.dart';
@@ -59,7 +60,7 @@ class _addaprescState extends State<addapresc> {
 
         child: Center(
           child: Column(
-            children: [Container(height: screenwidth/2,width: screenwidth/2,color: Colors.grey,child: isimage==false? Center(child: Text('No Picture',style: TextStyle(color: Colors.white),)) :Image.file(_file),),SizedBox(height: 10,),RawMaterialButton(onPressed: pickercamera,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Text(" Take A Picture ",style:TextStyle(fontFamily: 'kalam',color: Colors.white),)),RawMaterialButton(onPressed:() {if(isimage==false){}else{addpresc(_file!);}},shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Text("Send",style:TextStyle(fontFamily: 'kalam',color: Colors.white),))],
+            children: [Text('We will Remind you about water and medicine '.tr,style: TextStyle(fontFamily: 'Kalam',fontWeight: FontWeight.w700,color: Color.fromRGBO(13,142,171, 1),fontSize: screenwidth/20),),SizedBox(height: screenheight/6,),Container(height: screenwidth/2,width: screenwidth/2,color: Colors.grey,child: isimage==false? Center(child: Text('No Picture',style: TextStyle(color: Colors.white),)) :Image.file(_file),),SizedBox(height: 10,),RawMaterialButton(onPressed: pickercamera,shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Text(" Take A Picture ",style:TextStyle(fontFamily: 'kalam',color: Colors.white),)),RawMaterialButton(onPressed:() {if(isimage==false){}else{addpresc(_file!);}},shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)) ,fillColor:Color.fromRGBO(13,142,171, 1) ,child: Text("Send",style:TextStyle(fontFamily: 'kalam',color: Colors.white),))],
           ),
         ),
       ),
